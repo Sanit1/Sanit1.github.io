@@ -45,7 +45,7 @@
     <link href="https://sanit1.github.io/2017/02/12/2016%E5%B9%B4%E6%80%BB%E7%BB%93%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AF%B9%E4%BA%8E%E6%9C%AA%E6%9D%A5%E7%9A%84%E5%B1%95%E6%9C%9B/"/>
     <id>https://sanit1.github.io/2017/02/12/2016年总结，以及对于未来的展望/</id>
     <published>2017-02-12T08:25:17.000Z</published>
-    <updated>2017-04-04T04:48:18.731Z</updated>
+    <updated>2017-04-04T05:44:01.115Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>转眼16年就过去了，过年也比较早，1月份就是春节了。去年9月10月的时候感觉时间过的好慢，而后又感觉自己玩了两月，怎么那么快就过完年了。元宵也过了，传统意义上的年已经过完了，是时候开始新的一年了。回顾2016年，我感觉是我技术进步很快的一年，在一家公司呆了也算一年多一个月了，感觉自己不管是技术上还是工作上还是为人处事上都成熟了好多。我先回顾总结下16年，再来展望17年。</p>
@@ -98,6 +98,12 @@
     </summary>
     
     
+      <category term="自我总结" scheme="https://sanit1.github.io/tags/%E8%87%AA%E6%88%91%E6%80%BB%E7%BB%93/"/>
+    
+      <category term="自我评价" scheme="https://sanit1.github.io/tags/%E8%87%AA%E6%88%91%E8%AF%84%E4%BB%B7/"/>
+    
+      <category term="2017展望" scheme="https://sanit1.github.io/tags/2017%E5%B1%95%E6%9C%9B/"/>
+    
   </entry>
   
   <entry>
@@ -105,7 +111,7 @@
     <link href="https://sanit1.github.io/2017/01/08/Laravel%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
     <id>https://sanit1.github.io/2017/01/08/Laravel依赖注入的实现/</id>
     <published>2017-01-07T18:02:58.000Z</published>
-    <updated>2017-04-04T04:47:53.178Z</updated>
+    <updated>2017-04-04T05:41:22.361Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>什么是依赖注入？依赖注入其实和控制反转是一个概念，这个特性在这个框架各个地方都有体现。最傻逼的说法就是没new了，尽可能的解耦代码。就是A类里面的需要依赖到B类，依赖注入的话直接把B类的实例注入到A类实现的方法中，而不是直接在A方法里面new。大大降低了代码的耦合<br><a id="more"></a></p>
@@ -134,6 +140,12 @@
     </summary>
     
     
+      <category term="Laravel" scheme="https://sanit1.github.io/tags/Laravel/"/>
+    
+      <category term="IOC容器" scheme="https://sanit1.github.io/tags/IOC%E5%AE%B9%E5%99%A8/"/>
+    
+      <category term="依赖注入" scheme="https://sanit1.github.io/tags/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/"/>
+    
   </entry>
   
   <entry>
@@ -141,24 +153,32 @@
     <link href="https://sanit1.github.io/2016/12/01/Docker%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
     <id>https://sanit1.github.io/2016/12/01/Docker的简单使用/</id>
     <published>2016-11-30T17:59:24.000Z</published>
-    <updated>2017-04-04T04:49:22.245Z</updated>
+    <updated>2017-04-04T05:43:04.030Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker<br><a id="more"></a></p>
 <hr>
+</blockquote>
 <h3 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h3><p>　　根据百度百科的定义:Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。其实docker就是一个容器的概念，这个容器可以运行各种镜像。比如你线上的环境是lnmp,你可以打包成一个docker镜像，你自己做负载或者要求多台服务器环境一样的时候，每台装个docker。然后run同样的镜像，那么就能保持各个环境的一致。而且你一台服务器可以跑多个镜像哦。</p>
 <hr>
 <h3 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h3><p>　　Docker的安装也很简单，我们打开<a href="https://www.docker.com/" target="_blank" rel="external">docker官网</a>。官网有介绍docker的安装。我简单的来说明一下吧。如果你的电脑是Windows操作系统，最好升级到win10,docker在不是win10专业版或者企业版的电脑上也可以跑，不过这时候你是没法安装docker for windows的，这时候，docker是要在virtualbox运行的。也就相当于你Windows开了个虚拟机来跑docker.我上述讲的那两个版本的Windows能跑docker是因为win10自带虚拟机——Hyper-V。所以能运行docker.至于在linux下的安装，我主要用的Centos，你要想安装docker,你得把你的linux内核升到3以上。大部分人用的都是Centos6.5.他的内核是基于linux2.6的。如果你用的是Centos7.那你什么都不用管，可以直接安装，如果用的是6.5的，你可以选择换成7或者你可以在不升级操作系统，只升级它的内核。至于具体怎么升级，这里不展开讲，我有空也会在我的博客更新的。其实百度下有很多，只不过都是良莠不齐。具体的安装过程很简单，只要你满足我上述讲的条件的机子，因为比较穷，玩不起mac,没在mac下安装过，基本上几分钟就安装好了。<a href="https://docs.docker.com/engine/getstarted/" target="_blank" rel="external">docker安装过程</a></p>
 <hr>
 <h3 id="运行docker容器"><a href="#运行docker容器" class="headerlink" title="运行docker容器"></a>运行docker容器</h3><p>　　安装好Docker后，我们得有个镜像才能让容器跑起来(Windows下直接打开cmd命令行)。首先我们先登录一个docker仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker login --username=xxxxx</div></pre></td></tr></table></figure></p>
-</blockquote>
 <p>然后根据提示输入密码，登录成功。然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull 镜像名称:镜像tag</div></pre></td></tr></table></figure></p>
-<p>阿里云有免费的docker仓库，我就拿来用了。然后你需要做的就是等待镜像下载好。下载好后，我们可以通过<figure class="highlight docker"><figcaption><span>images -a```查看已经下载的镜像。如果你直接docker pull的话，应该是从dockerhub上载公共镜像的</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![docker pull成功的结果](http://ofnct0qsm.bkt.clouddn.com/dockerPull.png)</div><div class="line">这就是我下载好的镜像。我们怎么把它跑起来呢？</div></pre></td></tr></table></figure></p>
-<p>docker run -itd –name work  -p  80:80  -v d:/work/:/dockerdata/www/ registry.cn-hangzhou.aliyuncs.com/hsn/lnmp:160930<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我主要讲下几个重要的参数 --name是指你要跑起来容器的名字，-p是端口映射的意思，就是把本机的80端口映射到虚拟机里面的80端口，-v是绑定目录的意思，就是把你本机的目录绑定到docker容器里面。后面跟的就是你的镜像。run好我们的容器之后，我们开始进入容器</div></pre></td></tr></table></figure></p>
-<p>docker attach 你run的容器名字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">这时候我们就进入了我们run起来的容器了。如果你忘记了容器名字，你可以用```docker ps -a ```来查看你所有run的容器。同一个镜像可以被run多个容器。[更多docker run参数说明参考](http://www.infoq.com/cn/articles/docker-command-line-quest/)</div><div class="line">___</div><div class="line">### 在docker容器里面跑项目</div><div class="line">因为我刚才在我把本机的80端口映射到docker容器的80端口。我在容器里面有nginx。所以我只要这样配置就能跑起nginx服务。</div></pre></td></tr></table></figure></p>
-<p> listen 80;<br> server_name book.work.dev;(自己定的域名)<br> index index.html index.htm index.php default.html default.htm default.php;<br> root  /dockerdata/www/book/public;(容器里面项目的入口,对应的就是我挂载的D:/work/book/public)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">自己本机的host这样改</div></pre></td></tr></table></figure></p>
-<p>192.168.10.207  book.work.dev(host域名指向本机的ip,不走公网的dns)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ok,打开浏览器，我们就能愉快的玩耍了。</div><div class="line">___</div><div class="line">#####上传镜像到自己的仓库</div><div class="line">比如有时候我们装了个redis啊，装了个mongodb啊，我们想下次使用的时候容器还会有这些东西。也简单的，我这里以阿里云的docker仓库为例。登录[阿里云docker仓库](https://dev.aliyun.com).然后创建个本地镜像仓库。然后</div></pre></td></tr></table></figure></p>
-<p>docker login –username=xxxxx registry.cn-hangzhou.aliyuncs.com<br>docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]<br>docker push registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]<br>```<br><img src="http://ofnct0qsm.bkt.clouddn.com/dockerpush.png" alt="docker push"><br>每次给你的容器打个tag就能推送到阿里云的docker仓库了。</p>
+<p>阿里云有免费的docker仓库，我就拿来用了。然后你需要做的就是等待镜像下载好。下载好后，我们可以通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images -a</div></pre></td></tr></table></figure>
+<p>查看已经下载的镜像。如果你直接docker pull的话，应该是从dockerhub上载公共镜像的<br><img src="http://ofnct0qsm.bkt.clouddn.com/dockerPull.png" alt="docker pull成功的结果"><br>这就是我下载好的镜像。我们怎么把它跑起来呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -itd --name work  -p  80:80  -v d:/work/:/dockerdata/www/ registry.cn-hangzhou.aliyuncs.com/hsn/lnmp:160930</div></pre></td></tr></table></figure>
+<p>我主要讲下几个重要的参数 –name是指你要跑起来容器的名字，-p是端口映射的意思，就是把本机的80端口映射到虚拟机里面的80端口，-v是绑定目录的意思，就是把你本机的目录绑定到docker容器里面。后面跟的就是你的镜像。run好我们的容器之后，我们开始进入容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker attach 你run的容器名字</div></pre></td></tr></table></figure></p>
+<p>这时候我们就进入了我们run起来的容器了。如果你忘记了容器名字，你可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure></p>
+<p>来查看你所有run的容器。同一个镜像可以被run多个容器。<a href="http://www.infoq.com/cn/articles/docker-command-line-quest/" target="_blank" rel="external">更多docker run参数说明参考</a></p>
+<hr>
+<h3 id="在docker容器里面跑项目"><a href="#在docker容器里面跑项目" class="headerlink" title="在docker容器里面跑项目"></a>在docker容器里面跑项目</h3><p>因为我刚才在我把本机的80端口映射到docker容器的80端口。我在容器里面有nginx。所以我只要这样配置就能跑起nginx服务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">listen 80;</div><div class="line">server_name book.work.dev;(自己定的域名)</div><div class="line">index index.html index.htm index.php default.html default.htm default.php;</div><div class="line">root  /dockerdata/www/book/public;(容器里面项目的入口,对应的就是我挂载的D:/work/book/public)</div></pre></td></tr></table></figure></p>
+<p>自己本机的host这样改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">192.168.10.207  book.work.dev(host域名指向本机的ip,不走公网的dns)</div></pre></td></tr></table></figure></p>
+<p>ok,打开浏览器，我们就能愉快的玩耍了。</p>
+<hr>
+<h3 id="上传镜像到自己的仓库"><a href="#上传镜像到自己的仓库" class="headerlink" title="上传镜像到自己的仓库"></a>上传镜像到自己的仓库</h3><p>比如有时候我们装了个redis啊，装了个mongodb啊，我们想下次使用的时候容器还会有这些东西。也简单的，我这里以阿里云的docker仓库为例。登录<a href="https://dev.aliyun.com" target="_blank" rel="external">阿里云docker仓库</a>.然后创建个本地镜像仓库。然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker login --username=xxxxx registry.cn-hangzhou.aliyuncs.com</div><div class="line">docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]</div><div class="line">docker push registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]</div></pre></td></tr></table></figure></p>
+<p><img src="http://ofnct0qsm.bkt.clouddn.com/dockerpush.png" alt="docker push"><br>每次给你的容器打个tag就能推送到阿里云的docker仓库了。</p>
 <hr>
 <h3 id="如何在本地制作Docker镜像"><a href="#如何在本地制作Docker镜像" class="headerlink" title="如何在本地制作Docker镜像"></a>如何在本地制作Docker镜像</h3><hr>
 <h3 id="Docker的高级玩法-docker-file"><a href="#Docker的高级玩法-docker-file" class="headerlink" title="Docker的高级玩法(docker-file)"></a>Docker的高级玩法(docker-file)</h3><hr>
@@ -173,6 +193,8 @@
     </summary>
     
     
+      <category term="Docker" scheme="https://sanit1.github.io/tags/Docker/"/>
+    
   </entry>
   
   <entry>
@@ -180,15 +202,20 @@
     <link href="https://sanit1.github.io/2016/11/16/%E5%AD%98%E5%9C%A8%E5%B0%B1%E6%9B%B4%E6%96%B0%EF%BC%8C%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%B0%B1%E6%8F%92%E5%85%A5%E5%9C%A8%E5%B9%B6%E5%8F%91%E6%83%85%E6%99%AF%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%B8%B8%E8%A7%81%E7%9A%84BUG%E6%8E%A2%E8%AE%A8/"/>
     <id>https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/</id>
     <published>2016-11-15T17:58:13.000Z</published>
-    <updated>2017-04-04T04:47:02.097Z</updated>
+    <updated>2017-04-04T05:42:47.250Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>有些框架直接在 ORM 里面封装了这种 update or insert 的操作，分析源码，可能是直接用 mysql 的 <strong>ON DUPLICATE KEY UPDATE</strong> 或者就是先查询判断存不存在,再插入。而今天我们就来讨论后者。<br><a id="more"></a></p>
 <hr>
-<h3 id="BUG举例"><a href="#BUG举例" class="headerlink" title="BUG举例"></a>BUG举例</h3><p>　　因为这个bug是公司的实际业务逻辑，所以我下面不贴出具体的代码，以伪代码说明。一开始写的时候大家都在赶工，没考虑到各种情况，业务都稳定的情况下，突然有一天，有人告诉我，线上的公司表出现两条一某一样的公司信息，申请人也是同一个，什么都一样。我仔细回来检查，具体的业务代码是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$company = db-&gt;where(&apos;根据输入的信息&apos;)-&gt;select();</div><div class="line">if(!empty($company)&#123;</div><div class="line">    db-&gt;update(&apos;根据输入的信息&apos;);</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">    db-&gt;insert(&apos;根据输入的信息&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
+<h3 id="BUG举例"><a href="#BUG举例" class="headerlink" title="BUG举例"></a>BUG举例</h3><p>　　因为这个bug是公司的实际业务逻辑，所以我下面不贴出具体的代码，以伪代码说明。一开始写的时候大家都在赶工，没考虑到各种情况，业务都稳定的情况下，突然有一天，有人告诉我，线上的公司表出现两条一某一样的公司信息，申请人也是同一个，什么都一样。我仔细回来检查，具体的业务代码是这样的：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$company = db-&gt;where(<span class="string">'根据输入的信息'</span>)-&gt;select();</div><div class="line"><span class="keyword">if</span>(!<span class="keyword">empty</span>($company)&#123;</div><div class="line">    db-&gt;update(<span class="string">'根据输入的信息'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line">    db-&gt;insert(<span class="string">'根据输入的信息'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>　　我一开始不相信这样的代码会出现bug,自己拿号不断去试，结果自己怎么提交最多存进去一条啊，有记录就会更新。我感觉是不是测试坑我。因为还有种极端的情况下我没考虑。那就是万恶的并发！！！于是我就开始去用<a href="http://baike.baidu.com/link?url=oxqKIXKhh3k-fc2wDXDyAevQItL2br4Xit6ozi2QhN5eiRa99baS7ksPYSdZKiR8A6bKCYXzWaE5nsukhaGzyK" target="_blank" rel="external">apache</a>自带的<a href="http://baike.baidu.com/subview/32903/6675457.htm#viewPageContent" target="_blank" rel="external">ab</a>程序去模拟并发。至于这个工具具体怎么用，我也只会基础的，这里就不继续展开讲了。我就用基础的模拟<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ab -c 3 -n 3 -p post.txt application/x-www-form-urlencoded http://xxx.xxx.xxx/xx</div></pre></td></tr></table></figure></p>
-<p><code>-n</code>表示总的请求数，<code>-c</code>表示并发数，<code>-p</code>表示请求方式是 post ,<code>post.txt</code>就是我要请求接口的数据，里面就是<code>a=xx&amp;b=xxx</code>这种格式，再后面跟着的就是接口的请求地址了。因为这里不想插爆库，就直接用小点的数量模拟，然后发现数据库里面确实存进去了3条一模一样的数据。这就是造成 bug 最直接的原因，前端没有做判断，可能别人手抖，直接点了两下，直接post了两次，就像并发一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-n</div></pre></td></tr></table></figure>
+<p>表示总的请求数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-c</div></pre></td></tr></table></figure></p>
+<p>表示并发数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-p</div></pre></td></tr></table></figure></p>
+<p>表示请求方式是 post ,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">post.txt</div></pre></td></tr></table></figure></p>
+<p>就是我要请求接口的数据<br>里面就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a=xx&amp;b=xxx</div></pre></td></tr></table></figure></p>
+<p>这种格式。再后面跟着的就是接口的请求地址了。因为这里不想插爆库，就直接用小点的数量模拟，然后发现数据库里面确实存进去了3条一模一样的数据。这就是造成 bug 最直接的原因，前端没有做判断，可能别人手抖，直接点了两下，直接post了两次，就像并发一样。</p>
 <hr>
 <h3 id="目前我的解决办法"><a href="#目前我的解决办法" class="headerlink" title="目前我的解决办法"></a>目前我的解决办法</h3><p>　　其实这完全是可以避免的 bug，因为既然我们有这样的业务逻辑，但是表结构没这么设计，然后因为有历史遗留数据的问题，所以很蛋疼。先来说说第一种解决办法吧</p>
 <ul>
@@ -218,6 +245,12 @@
     </summary>
     
     
+      <category term="update or insert" scheme="https://sanit1.github.io/tags/update-or-insert/"/>
+    
+      <category term="并发插入" scheme="https://sanit1.github.io/tags/%E5%B9%B6%E5%8F%91%E6%8F%92%E5%85%A5/"/>
+    
+      <category term="bug" scheme="https://sanit1.github.io/tags/bug/"/>
+    
   </entry>
   
   <entry>
@@ -225,78 +258,36 @@
     <link href="https://sanit1.github.io/2016/10/24/API%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/"/>
     <id>https://sanit1.github.io/2016/10/24/API文档自动生成/</id>
     <published>2016-10-23T17:50:00.000Z</published>
-    <updated>2017-04-04T04:46:16.335Z</updated>
+    <updated>2017-04-04T05:40:16.782Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了<br><a id="more"></a></p>
 <hr>
+</blockquote>
 <h3 id="apidoc简介"><a href="#apidoc简介" class="headerlink" title="apidoc简介"></a>apidoc简介</h3><p>　　apidoc是node的一个插件，它的功能就是能让把我们的代码注释生成api文档。它支持php java javascript python等多中语言。因为写接口的同学通常很烦写完接口还得写文档，文档更新又麻烦。apidoc不仅支持项目的版本，也支持api的版本。在我所接触过的文档生成工具里面，这个是我感觉比较好用的。</p>
 <hr>
 <h3 id="apidoc的安装"><a href="#apidoc的安装" class="headerlink" title="apidoc的安装"></a>apidoc的安装</h3><p>　　apidoc是node的一个插件，那么它的安装就依赖node。node的具体安装我这里就不详细说了，去node官网下包,解压，编译然后安装。直接执行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install apidoc -g</div></pre></td></tr></table></figure></p>
-</blockquote>
 <hr>
-<h3 id="samba的安装"><a href="#samba的安装" class="headerlink" title="samba的安装"></a>samba的安装</h3><p>　　samba的安装也很简单，本人用的是CentOS，我直接执行<figure class="highlight plain"><figcaption><span>install samba```就安装好了。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">___</div><div class="line">### samba的配置</div></pre></td></tr></table></figure></p>
-<pre><code>[public]
-comment = Public Stuff
-path = /share/doc  你需要共享文件夹的路径
-browseable = yes  可浏览性 
-guest ok = yes  是否允许访客
-public = yes  是否可上传
-writable = yes  是否可写
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">我自己装的时候也都是这么配置的，注意，这个samba需要你关闭你的防火墙，还得把你共享的目录赋予777的权限（貌似755就够了，我直接给了777）。我这边还遇到过一个很坑爹的问题，就是这样配置了，用Windows访问这个共享目录的时候，要求我输入用户名和密码。其实主要还得把上面的```security = user```改成```security = share```。samba也是支持用户管理的，就是可以分配账号密码的，具体的就不展开介绍了。</div><div class="line">___</div><div class="line">### apidoc的使用</div><div class="line">　　例如我们在代码里面下了这样的一段注释:</div></pre></td></tr></table></figure>
-<p>/**</p>
-<ul>
-<li>@api {get post} /brand/:id/:name/:new 这里中括号里面填的的是请求方式（GET POST OPTION DELETE等），后面填的是路由</li>
-<li>@apiGroup brandList API接口所在的组名称</li>
-<li>@apiName  brands  API接口名称</li>
-<li>@apiVersion 1.0.1 API接口版本</li>
-<li>@apiDescription  API接口的描述<br>*</li>
-<li>@apiParam (入参) {Number{1-9999}}()这个括号里面的天的参数的组，括号里面相同的会被放在同一个表格里面 id=0 请求参数 大括号里面填的是参数类型 里面的大括号表示值的范围 后面就是参数的名称和默认值</li>
-<li>@apiParam (入参) {String=”a”,”b”,”c”} name 品牌名称,等于号表示允许值</li>
-<li>@apiParam (入参) {Boolean} new </li>
-<li>@apiParam (入参) {Number} [test] 如果参数套上[]这样的中括号，表明这个值是个可选的值<br>*</li>
-<li>@apiParamExample {json} 接口返回值</li>
-<li>{</li>
-<li>“code” : 0,</li>
-<li>“message” : “success”,</li>
-<li>“data” : {</li>
-<li>“result” : “ok”</li>
-<li>}</li>
-<li>}</li>
-<li>@apiSampleRequest  下面就是一个模拟请求器，可以帮我们调试接口</li>
-<li><p><a href="http://www.work.dev" target="_blank" rel="external">http://www.work.dev</a><br><em>
-</em>/</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">基本上用这些已经足够了，其他的用法可以参考它的官网:http://apidocjs.com/</div><div class="line">___</div><div class="line">####生成apidoc</div><div class="line">　　假如我在我的控制器里面写了这样一段注释:</div></pre></td></tr></table></figure>
-<p>/**</p>
-<ul>
-<li>@api {GET} /user_info 获取用户信息接口</li>
-<li>@apiGroup User</li>
-<li>@apiVersion 2.0.0</li>
-<li>@apiDescription 获取用户信息<br>*</li>
-<li>@apiParam (入参) {String} token 登录成功后客户端返回的token<br>*</li>
-<li>@apiSuccessExample Success-Response:</li>
-<li>{</li>
-<li>“code”: 0,</li>
-<li>“message”: “ok”</li>
-<li>“data”: {</li>
-<li>“name”: “1”,//状态 0:启用 1:停用</li>
-<li>“role”: “1”,//1管理员，0是普通员工</li>
-<li>“sex”: “1”,//1表示男性，2表示女性</li>
-<li>}</li>
-<li>}<br>*</li>
-<li>@apiSampleRequest</li>
-<li><a href="http://api.test.com/user_info" target="_blank" rel="external">http://api.test.com/user_info</a><br><em>
-</em>/<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">先cd到项目里面</div><div class="line">然后执行这样的语句:</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>apidoc -i app/Http/Controllers -o \115.28.231.211\public\</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  因为我samba共享的是这样一个文件夹，并且在这个里面放文档。然后我们来看下生成的结果</div><div class="line"> ![](http://ofnct0qsm.bkt.clouddn.com/apidoc%E7%94%9F%E6%88%90%E7%9A%84%E7%BB%93%E6%9E%9C.png)</div><div class="line"> 这时候我们直接点击index.html可以直接看到这样的静态页面:</div><div class="line"> ![](http://ofnct0qsm.bkt.clouddn.com/%E6%89%93%E5%BC%80%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%BB%93%E6%9E%9C.png)</div><div class="line"> ___</div><div class="line">### 后话</div><div class="line"> 　　到这里，我们就已经很方便的能运用apidoc了，我们可以自己直接写好接口的时候直接写注释，一句命令写到开了samba的服务器上，然后直接访问静态页面，如果不想这样赤裸裸的访问静态页面，可以用node或者nginx直接绑上去，这里就不继续展开讲了。</div><div class="line">___</div><div class="line">### 后续补充</div><div class="line"></div><div class="line">　　其实在使用中的时候会发现一些很坑爹的问题，就是GroupName没法用中文，但是其他地方可以用中文。毕竟这个是国外大佬发明的，不是国人的产物，有存在这样的问题也在所难免。我不断的搜，发现github上有人给他提issure。也有给出了解决方案，apidoc的语法其实是支持引用的，所以我们可以这样定义</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>@apiDefine name 测试中文<br>*/<br><code>然后我们怎么使用呢。可以直接</code>@apiUse name <code>也可以直接在注释里面写</code>name```,这样就可以使用中文了。</li>
-</ul>
+<h3 id="samba的安装"><a href="#samba的安装" class="headerlink" title="samba的安装"></a>samba的安装</h3><p>　　samba的安装也很简单，本人用的是CentOS，我直接执行<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install samba</div></pre></td></tr></table></figure></p>
+<p>  就安装好了。</p>
+<hr>
+<h3 id="samba的配置"><a href="#samba的配置" class="headerlink" title="samba的配置"></a>samba的配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[public]</div><div class="line">comment = Public Stuff</div><div class="line">path = /share/doc  你需要共享文件夹的路径</div><div class="line">browseable = yes  可浏览性 </div><div class="line">guest ok = yes  是否允许访客</div><div class="line">public = yes  是否可上传</div><div class="line">writable = yes  是否可写</div></pre></td></tr></table></figure>
+<p>我自己装的时候也都是这么配置的，注意，这个samba需要你关闭你的防火墙，还得把你共享的目录赋予777的权限（貌似755就够了，我直接给了777）。我这边还遇到过一个很坑爹的问题，就是这样配置了，用Windows访问这个共享目录的时候，要求我输入用户名和密码。其实主要还得把上面的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">security = user</div></pre></td></tr></table></figure></p>
+<p>改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">security = share</div></pre></td></tr></table></figure></p>
+<p>samba也是支持用户管理的，就是可以分配账号密码的，具体的就不展开介绍了。</p>
+<hr>
+<h3 id="apidoc的使用"><a href="#apidoc的使用" class="headerlink" title="apidoc的使用"></a>apidoc的使用</h3><p>　　例如我们在代码里面下了这样的一段注释:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @api &#123;get post&#125; /brand/:id/:name/:new 这里中括号里面填的的是请求方式（GET POST OPTION DELETE等），后面填的是路由</div><div class="line"> * @apiGroup brandList API接口所在的组名称</div><div class="line"> * @apiName  brands  API接口名称</div><div class="line"> * @apiVersion 1.0.1 API接口版本</div><div class="line"> * @apiDescription  API接口的描述</div><div class="line"> *</div><div class="line"> * @apiParam (入参) &#123;Number&#123;1-9999&#125;&#125;()这个括号里面的天的参数的组，括号里面相同的会被放在同一个表格里面 id=0 请求参数 大括号里面填的是参数类型 里面的大括号表示值的范围 后面就是参数的名称和默认值</div><div class="line"> * @apiParam (入参) &#123;String=&quot;a&quot;,&quot;b&quot;,&quot;c&quot;&#125; name 品牌名称,等于号表示允许值</div><div class="line"> * @apiParam (入参) &#123;Boolean&#125; new </div><div class="line"> * @apiParam (入参) &#123;Number&#125; [test] 如果参数套上[]这样的中括号，表明这个值是个可选的值</div><div class="line"> *</div><div class="line"> * @apiParamExample &#123;json&#125; 接口返回值</div><div class="line"> * &#123;</div><div class="line"> *     &quot;code&quot; : 0,</div><div class="line"> *     &quot;message&quot; : &quot;success&quot;,</div><div class="line"> *     &quot;data&quot; : &#123;</div><div class="line"> *         &quot;result&quot; : &quot;ok&quot;</div><div class="line"> *     &#125;</div><div class="line"> * &#125;</div><div class="line"> * @apiSampleRequest  下面就是一个模拟请求器，可以帮我们调试接口</div><div class="line"> *     http://www.work.dev</div><div class="line"> *</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+<p>基本上用这些已经足够了，其他的用法可以参考它的官网:<a href="http://apidocjs.com/" target="_blank" rel="external">http://apidocjs.com/</a></p>
+<hr>
+<h3 id="生成apidoc"><a href="#生成apidoc" class="headerlink" title="生成apidoc"></a>生成apidoc</h3><p>　　假如我在我的控制器里面写了这样一段注释:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @api &#123;GET&#125; /user_info 获取用户信息接口</div><div class="line"> * @apiGroup User</div><div class="line"> * @apiVersion 2.0.0</div><div class="line"> * @apiDescription 获取用户信息</div><div class="line"> *</div><div class="line"> * @apiParam (入参) &#123;String&#125; token 登录成功后客户端返回的token</div><div class="line"> *</div><div class="line"> * @apiSuccessExample Success-Response:</div><div class="line"> *  &#123;</div><div class="line"> *      &quot;code&quot;: 0,</div><div class="line"> *      &quot;message&quot;: &quot;ok&quot;</div><div class="line"> *      &quot;data&quot;: &#123;</div><div class="line"> *           &quot;name&quot;: &quot;1&quot;,//状态 0:启用 1:停用</div><div class="line"> *           &quot;role&quot;: &quot;1&quot;,//1管理员，0是普通员工</div><div class="line"> *           &quot;sex&quot;: &quot;1&quot;,//1表示男性，2表示女性</div><div class="line"> *      &#125;</div><div class="line"> *  &#125;</div><div class="line"> *</div><div class="line"> * @apiSampleRequest</div><div class="line"> * http://api.test.com/user_info</div><div class="line"> *</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+<p>  先cd到项目里面<br>  然后执行这样的语句:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apidoc -i app/Http/Controllers -o \\115.28.231.211\public\</div></pre></td></tr></table></figure>
+<p>  因为我samba共享的是这样一个文件夹，并且在这个里面放文档。然后我们来看下生成的结果<br> <img src="http://ofnct0qsm.bkt.clouddn.com/apidoc%E7%94%9F%E6%88%90%E7%9A%84%E7%BB%93%E6%9E%9C.png" alt=""><br> 这时候我们直接点击index.html可以直接看到这样的静态页面:<br> <img src="http://ofnct0qsm.bkt.clouddn.com/%E6%89%93%E5%BC%80%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%BB%93%E6%9E%9C.png" alt=""></p>
+<hr>
+<h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h3><p> 　　到这里，我们就已经很方便的能运用apidoc了，我们可以自己直接写好接口的时候直接写注释，一句命令写到开了samba的服务器上，然后直接访问静态页面，如果不想这样赤裸裸的访问静态页面，可以用node或者nginx直接绑上去，这里就不继续展开讲了。</p>
+<hr>
+<h3 id="后续补充"><a href="#后续补充" class="headerlink" title="后续补充"></a>后续补充</h3><p>　　其实在使用中的时候会发现一些很坑爹的问题，就是GroupName没法用中文，但是其他地方可以用中文。毕竟这个是国外大佬发明的，不是国人的产物，有存在这样的问题也在所难免。我不断的搜，发现github上有人给他提issure。也有给出了解决方案，apidoc的语法其实是支持引用的，所以我们可以这样定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @apiDefine name 测试中文</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+<p>然后我们怎么使用呢。可以直接<code>@apiUse name</code>也可以直接在注释里面写<code>name</code>,这样就可以使用中文了。</p>
 <p>　　<font color="red">这个东西唯一让我不爽的就是有可能一大段注释只是为了生成接口文档！！！其它真的很好用</font></p>
 ]]></content>
     
@@ -307,6 +298,12 @@ writable = yes  是否可写
     
     </summary>
     
+      <category term="API文档" scheme="https://sanit1.github.io/categories/API%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="apidoc" scheme="https://sanit1.github.io/tags/apidoc/"/>
+    
+      <category term="samba" scheme="https://sanit1.github.io/tags/samba/"/>
     
   </entry>
   
