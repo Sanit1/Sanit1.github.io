@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="土狼的代码窝">
-    <title>Composer的使用 - 土狼的代码窝</title>
+    <title>API文档自动生成 - 土狼的代码窝</title>
     <meta name="author" content="Sanit">
     
     
@@ -15,16 +15,16 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
+    <meta name="description" content="本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Composer的使用">
-<meta property="og:url" content="https://sanit1.github.io/2017/03/22/Composer的使用/index.html">
+<meta property="og:title" content="API文档自动生成">
+<meta property="og:url" content="https://sanit1.github.io/2016/10/24/API文档自动生成/index.html">
 <meta property="og:site_name" content="土狼的代码窝">
-<meta property="og:description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
-<meta property="og:updated_time" content="2017-04-03T18:16:44.252Z">
+<meta property="og:description" content="本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了">
+<meta property="og:updated_time" content="2017-04-04T04:46:16.335Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Composer的使用">
-<meta name="twitter:description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
+<meta name="twitter:title" content="API文档自动生成">
+<meta name="twitter:description" content="本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了">
     
     
         
@@ -190,13 +190,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Composer的使用
+            API文档自动生成
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-03-22T15:58:00+08:00">
+    <time itemprop="datePublished" datetime="2016-10-24T01:50:00+08:00">
 	
-		    3月 22, 2017
+		    10月 24, 2016
     	
     </time>
     
@@ -206,30 +206,89 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h3 id="什么是Composer"><a href="#什么是Composer" class="headerlink" title="什么是Composer"></a>什么是Composer</h3><p>　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。<br>  <a id="more"></a></p>
+            <blockquote>
+<p>本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了<br><a id="more"></a></p>
 <hr>
-<h3 id="Composer的安装"><a href="#Composer的安装" class="headerlink" title="Composer的安装"></a>Composer的安装</h3><p>　　composer的安装非常简单，去composer官网(<a href="https://getcomposer.org)。" target="_blank" rel="external">https://getcomposer.org)。</a> Windows的用户可以直接下载.exe进行安装，但是必须自己已经安装好了php并且把php加到了环境变量，然后composer也是需要你的php开启一些基本的扩展，比如curl，fileinfo，openssl 我记得就这些了。当然如果你嫌弃安装麻烦的话，可以直接载composer.phar直接就行了。官方命名成.phar就把这个当作就是一个可执行的程序，其实composer的功能都是写在这个文件里面了。linux用户按照官网的安装命令安装，或者直接下载composer.phar也是可以的。如果出现了问题，要不就是你php没有加到环境变量，或者你php的一些基本扩展没开，不然不可能有问题。</p>
+<h3 id="apidoc简介"><a href="#apidoc简介" class="headerlink" title="apidoc简介"></a>apidoc简介</h3><p>　　apidoc是node的一个插件，它的功能就是能让把我们的代码注释生成api文档。它支持php java javascript python等多中语言。因为写接口的同学通常很烦写完接口还得写文档，文档更新又麻烦。apidoc不仅支持项目的版本，也支持api的版本。在我所接触过的文档生成工具里面，这个是我感觉比较好用的。</p>
 <hr>
-<h3 id="Composer的原理"><a href="#Composer的原理" class="headerlink" title="Composer的原理"></a>Composer的原理</h3><p>　　其实composer的原理还是很简单的。</p>
+<h3 id="apidoc的安装"><a href="#apidoc的安装" class="headerlink" title="apidoc的安装"></a>apidoc的安装</h3><p>　　apidoc是node的一个插件，那么它的安装就依赖node。node的具体安装我这里就不详细说了，去node官网下包,解压，编译然后安装。直接执行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install apidoc -g</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h3 id="samba的安装"><a href="#samba的安装" class="headerlink" title="samba的安装"></a>samba的安装</h3><p>　　samba的安装也很简单，本人用的是CentOS，我直接执行<figure class="highlight plain"><figcaption><span>install samba```就安装好了。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">___</div><div class="line">### samba的配置</div></pre></td></tr></table></figure></p>
+<pre><code>[public]
+comment = Public Stuff
+path = /share/doc  你需要共享文件夹的路径
+browseable = yes  可浏览性 
+guest ok = yes  是否允许访客
+public = yes  是否可上传
+writable = yes  是否可写
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">我自己装的时候也都是这么配置的，注意，这个samba需要你关闭你的防火墙，还得把你共享的目录赋予777的权限（貌似755就够了，我直接给了777）。我这边还遇到过一个很坑爹的问题，就是这样配置了，用Windows访问这个共享目录的时候，要求我输入用户名和密码。其实主要还得把上面的```security = user```改成```security = share```。samba也是支持用户管理的，就是可以分配账号密码的，具体的就不展开介绍了。</div><div class="line">___</div><div class="line">### apidoc的使用</div><div class="line">　　例如我们在代码里面下了这样的一段注释:</div></pre></td></tr></table></figure>
+<p>/**</p>
+<ul>
+<li>@api {get post} /brand/:id/:name/:new 这里中括号里面填的的是请求方式（GET POST OPTION DELETE等），后面填的是路由</li>
+<li>@apiGroup brandList API接口所在的组名称</li>
+<li>@apiName  brands  API接口名称</li>
+<li>@apiVersion 1.0.1 API接口版本</li>
+<li>@apiDescription  API接口的描述<br>*</li>
+<li>@apiParam (入参) {Number{1-9999}}()这个括号里面的天的参数的组，括号里面相同的会被放在同一个表格里面 id=0 请求参数 大括号里面填的是参数类型 里面的大括号表示值的范围 后面就是参数的名称和默认值</li>
+<li>@apiParam (入参) {String=”a”,”b”,”c”} name 品牌名称,等于号表示允许值</li>
+<li>@apiParam (入参) {Boolean} new </li>
+<li>@apiParam (入参) {Number} [test] 如果参数套上[]这样的中括号，表明这个值是个可选的值<br>*</li>
+<li>@apiParamExample {json} 接口返回值</li>
+<li>{</li>
+<li>“code” : 0,</li>
+<li>“message” : “success”,</li>
+<li>“data” : {</li>
+<li>“result” : “ok”</li>
+<li>}</li>
+<li>}</li>
+<li>@apiSampleRequest  下面就是一个模拟请求器，可以帮我们调试接口</li>
+<li><p><a href="http://www.work.dev" target="_blank" rel="external">http://www.work.dev</a><br><em>
+</em>/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">基本上用这些已经足够了，其他的用法可以参考它的官网:http://apidocjs.com/</div><div class="line">___</div><div class="line">####生成apidoc</div><div class="line">　　假如我在我的控制器里面写了这样一段注释:</div></pre></td></tr></table></figure>
+<p>/**</p>
+<ul>
+<li>@api {GET} /user_info 获取用户信息接口</li>
+<li>@apiGroup User</li>
+<li>@apiVersion 2.0.0</li>
+<li>@apiDescription 获取用户信息<br>*</li>
+<li>@apiParam (入参) {String} token 登录成功后客户端返回的token<br>*</li>
+<li>@apiSuccessExample Success-Response:</li>
+<li>{</li>
+<li>“code”: 0,</li>
+<li>“message”: “ok”</li>
+<li>“data”: {</li>
+<li>“name”: “1”,//状态 0:启用 1:停用</li>
+<li>“role”: “1”,//1管理员，0是普通员工</li>
+<li>“sex”: “1”,//1表示男性，2表示女性</li>
+<li>}</li>
+<li>}<br>*</li>
+<li>@apiSampleRequest</li>
+<li><a href="http://api.test.com/user_info" target="_blank" rel="external">http://api.test.com/user_info</a><br><em>
+</em>/<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">先cd到项目里面</div><div class="line">然后执行这样的语句:</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>apidoc -i app/Http/Controllers -o \115.28.231.211\public\</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  因为我samba共享的是这样一个文件夹，并且在这个里面放文档。然后我们来看下生成的结果</div><div class="line"> ![](http://ofnct0qsm.bkt.clouddn.com/apidoc%E7%94%9F%E6%88%90%E7%9A%84%E7%BB%93%E6%9E%9C.png)</div><div class="line"> 这时候我们直接点击index.html可以直接看到这样的静态页面:</div><div class="line"> ![](http://ofnct0qsm.bkt.clouddn.com/%E6%89%93%E5%BC%80%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%BB%93%E6%9E%9C.png)</div><div class="line"> ___</div><div class="line">### 后话</div><div class="line"> 　　到这里，我们就已经很方便的能运用apidoc了，我们可以自己直接写好接口的时候直接写注释，一句命令写到开了samba的服务器上，然后直接访问静态页面，如果不想这样赤裸裸的访问静态页面，可以用node或者nginx直接绑上去，这里就不继续展开讲了。</div><div class="line">___</div><div class="line">### 后续补充</div><div class="line"></div><div class="line">　　其实在使用中的时候会发现一些很坑爹的问题，就是GroupName没法用中文，但是其他地方可以用中文。毕竟这个是国外大佬发明的，不是国人的产物，有存在这样的问题也在所难免。我不断的搜，发现github上有人给他提issure。也有给出了解决方案，apidoc的语法其实是支持引用的，所以我们可以这样定义</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>@apiDefine name 测试中文<br>*/<br><code>然后我们怎么使用呢。可以直接</code>@apiUse name <code>也可以直接在注释里面写</code>name```,这样就可以使用中文了。</li>
+</ul>
+<p>　　<font color="red">这个东西唯一让我不爽的就是有可能一大段注释只是为了生成接口文档！！！其它真的很好用</font></p>
 
             
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
         
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">标签</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/composer/">composer</a>
-
-            </div>
-        
         <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/"  data-tooltip="存在就更新，不存在就插入在并发情景下一个常见的BUG探讨">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -237,7 +296,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/12/2016年总结，以及对于未来的展望/" data-tooltip="2016年总结，以及对于未来的展望">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -252,17 +311,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -300,7 +359,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/"  data-tooltip="存在就更新，不存在就插入在并发情景下一个常见的BUG探讨">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -308,7 +367,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/12/2016年总结，以及对于未来的展望/" data-tooltip="2016年总结，以及对于未来的展望">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -323,17 +382,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -353,17 +412,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/10/24/API文档自动生成/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>

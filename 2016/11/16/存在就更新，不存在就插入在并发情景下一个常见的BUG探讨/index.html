@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="土狼的代码窝">
-    <title>Composer的使用 - 土狼的代码窝</title>
+    <title>存在就更新，不存在就插入在并发情景下一个常见的BUG探讨 - 土狼的代码窝</title>
     <meta name="author" content="Sanit">
     
     
@@ -15,16 +15,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
+    <meta name="description" content="有些框架直接在 ORM 里面封装了这种 update or insert 的操作，分析源码，可能是直接用 mysql 的 ON DUPLICATE KEY UPDATE 或者就是先查询判断存不存在,再插入。而今天我们就来讨论后者。">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Composer的使用">
-<meta property="og:url" content="https://sanit1.github.io/2017/03/22/Composer的使用/index.html">
+<meta property="og:title" content="存在就更新，不存在就插入在并发情景下一个常见的BUG探讨">
+<meta property="og:url" content="https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/index.html">
 <meta property="og:site_name" content="土狼的代码窝">
-<meta property="og:description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
-<meta property="og:updated_time" content="2017-04-03T18:16:44.252Z">
+<meta property="og:description" content="有些框架直接在 ORM 里面封装了这种 update or insert 的操作，分析源码，可能是直接用 mysql 的 ON DUPLICATE KEY UPDATE 或者就是先查询判断存不存在,再插入。而今天我们就来讨论后者。">
+<meta property="og:image" content="http://ofnct0qsm.bkt.clouddn.com/%E5%B9%B6%E5%8F%91.png">
+<meta property="og:updated_time" content="2017-04-04T04:47:02.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Composer的使用">
-<meta name="twitter:description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
+<meta name="twitter:title" content="存在就更新，不存在就插入在并发情景下一个常见的BUG探讨">
+<meta name="twitter:description" content="有些框架直接在 ORM 里面封装了这种 update or insert 的操作，分析源码，可能是直接用 mysql 的 ON DUPLICATE KEY UPDATE 或者就是先查询判断存不存在,再插入。而今天我们就来讨论后者。">
+<meta name="twitter:image" content="http://ofnct0qsm.bkt.clouddn.com/%E5%B9%B6%E5%8F%91.png">
     
     
         
@@ -190,13 +192,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Composer的使用
+            存在就更新，不存在就插入在并发情景下一个常见的BUG探讨
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-03-22T15:58:00+08:00">
+    <time itemprop="datePublished" datetime="2016-11-16T01:58:13+08:00">
 	
-		    3月 22, 2017
+		    11月 16, 2016
     	
     </time>
     
@@ -206,30 +208,44 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h3 id="什么是Composer"><a href="#什么是Composer" class="headerlink" title="什么是Composer"></a>什么是Composer</h3><p>　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。<br>  <a id="more"></a></p>
+            <blockquote>
+<p>有些框架直接在 ORM 里面封装了这种 update or insert 的操作，分析源码，可能是直接用 mysql 的 <strong>ON DUPLICATE KEY UPDATE</strong> 或者就是先查询判断存不存在,再插入。而今天我们就来讨论后者。<br><a id="more"></a></p>
 <hr>
-<h3 id="Composer的安装"><a href="#Composer的安装" class="headerlink" title="Composer的安装"></a>Composer的安装</h3><p>　　composer的安装非常简单，去composer官网(<a href="https://getcomposer.org)。" target="_blank" rel="external">https://getcomposer.org)。</a> Windows的用户可以直接下载.exe进行安装，但是必须自己已经安装好了php并且把php加到了环境变量，然后composer也是需要你的php开启一些基本的扩展，比如curl，fileinfo，openssl 我记得就这些了。当然如果你嫌弃安装麻烦的话，可以直接载composer.phar直接就行了。官方命名成.phar就把这个当作就是一个可执行的程序，其实composer的功能都是写在这个文件里面了。linux用户按照官网的安装命令安装，或者直接下载composer.phar也是可以的。如果出现了问题，要不就是你php没有加到环境变量，或者你php的一些基本扩展没开，不然不可能有问题。</p>
+<h3 id="BUG举例"><a href="#BUG举例" class="headerlink" title="BUG举例"></a>BUG举例</h3><p>　　因为这个bug是公司的实际业务逻辑，所以我下面不贴出具体的代码，以伪代码说明。一开始写的时候大家都在赶工，没考虑到各种情况，业务都稳定的情况下，突然有一天，有人告诉我，线上的公司表出现两条一某一样的公司信息，申请人也是同一个，什么都一样。我仔细回来检查，具体的业务代码是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$company = db-&gt;where(&apos;根据输入的信息&apos;)-&gt;select();</div><div class="line">if(!empty($company)&#123;</div><div class="line">    db-&gt;update(&apos;根据输入的信息&apos;);</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">    db-&gt;insert(&apos;根据输入的信息&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>　　我一开始不相信这样的代码会出现bug,自己拿号不断去试，结果自己怎么提交最多存进去一条啊，有记录就会更新。我感觉是不是测试坑我。因为还有种极端的情况下我没考虑。那就是万恶的并发！！！于是我就开始去用<a href="http://baike.baidu.com/link?url=oxqKIXKhh3k-fc2wDXDyAevQItL2br4Xit6ozi2QhN5eiRa99baS7ksPYSdZKiR8A6bKCYXzWaE5nsukhaGzyK" target="_blank" rel="external">apache</a>自带的<a href="http://baike.baidu.com/subview/32903/6675457.htm#viewPageContent" target="_blank" rel="external">ab</a>程序去模拟并发。至于这个工具具体怎么用，我也只会基础的，这里就不继续展开讲了。我就用基础的模拟<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ab -c 3 -n 3 -p post.txt application/x-www-form-urlencoded http://xxx.xxx.xxx/xx</div></pre></td></tr></table></figure></p>
+<p><code>-n</code>表示总的请求数，<code>-c</code>表示并发数，<code>-p</code>表示请求方式是 post ,<code>post.txt</code>就是我要请求接口的数据，里面就是<code>a=xx&amp;b=xxx</code>这种格式，再后面跟着的就是接口的请求地址了。因为这里不想插爆库，就直接用小点的数量模拟，然后发现数据库里面确实存进去了3条一模一样的数据。这就是造成 bug 最直接的原因，前端没有做判断，可能别人手抖，直接点了两下，直接post了两次，就像并发一样。</p>
 <hr>
-<h3 id="Composer的原理"><a href="#Composer的原理" class="headerlink" title="Composer的原理"></a>Composer的原理</h3><p>　　其实composer的原理还是很简单的。</p>
+<h3 id="目前我的解决办法"><a href="#目前我的解决办法" class="headerlink" title="目前我的解决办法"></a>目前我的解决办法</h3><p>　　其实这完全是可以避免的 bug，因为既然我们有这样的业务逻辑，但是表结构没这么设计，然后因为有历史遗留数据的问题，所以很蛋疼。先来说说第一种解决办法吧</p>
+<ul>
+<li><strong>修改表结构</strong></li>
+</ul>
+<p>既然业务这么设计，我们只要给表增加唯一索引，这样子，来再多的并发，同样的数据只能有一条。由于我只是个小兵，没有改数据库的权限，然后根据具体的业务，产品告诉我也还是可以允许这样重复的数据存在的（此刻我已经泪奔 T . T）。所以我的业务设计本身就有缺陷，又要防止这种不必要的并发，所以改唯一索引对我的情况是没用的。其实大部分情况下，一般的处理办法就是给这个表建立一个或者多个 index key(索引)。这样数据库就能帮我们保证数据的唯一性。其实我一开始说的 mysql 自带的 ON DUPLICATE KEY UPDATE 也是需要有索引才能用的。</p>
+<ul>
+<li><strong>锁表</strong></li>
+</ul>
+<p>既然是为了防止并发的重复数据提交，锁表轻松解决问题！什么是锁表，所谓的锁表就是——这表被我锁住了，其它人想进来，得先等老子操作完，解锁才给你用。这样并发进来的情况下，就算是并发，还是有先后顺序的，第一个人只要锁住表，后面的并发得等第一个人执行完，才能使用表，这样就会走else分支，直接更新，而不会继续插入。</p>
+<ul>
+<li><strong>使用队列</strong></li>
+</ul>
+<p>这样场景下，并发就像一条直线的数据进来就像这样<br><img src="http://ofnct0qsm.bkt.clouddn.com/%E5%B9%B6%E5%8F%91.png" alt="并发队列处理"><br>这样子我们就可以错开并发，从队列依次取，就会执行正常的业务逻辑。</p>
+<ul>
+<li><strong>数据先经缓存，再入库</strong></li>
+</ul>
+<p>这其实就是一个比队列更简易的处理方式，因为这种业务逻辑下，我们并没有完全发挥出队列的全部优势，可以先让数据经过一遍缓存，缓存中帮我们过滤了那些重复的数据，然后我们执行正常的逻辑也不影响。代码逻辑可以这样写<br>app(‘redis’)-&gt;setnx(md5(请求的参数)); 再根据你的实际业务需求设置这个key的过期时间。只有在set成功的情况下再进入库(测试过，就算并发进来。对用一个key只可能set成功一次)。setnx命令参考(<a href="http://doc.redisfans.com/string/setnx.html" target="_blank" rel="external">http://doc.redisfans.com/string/setnx.html</a>)</p>
+<h3 id="问题引伸的思考"><a href="#问题引伸的思考" class="headerlink" title="问题引伸的思考"></a>问题引伸的思考</h3><p>　　其实在一些小公司，连个DBA都没有的情况下。因为业务人员的不细心已经工作人员敲代码只为量不为结果，可能就导致这样的问题出现。我也是通过这个问题知道了一些本来我不熟悉的知识。我不知道大公司的处理流程是怎样的，肯定不会有这样的问题。但是引发了我的思考，是不是大公司他们对于一些并发或者操作频繁的数据，都是先进过一层像redis之类的缓存层，然后再入库到mysql或者其它数据库。这就相当于一个从缓存到磁盘的过程，貌似也符合操作系统的逻辑。我只是个小打字员，也没法接触大公司的业务，只能自己想想。如果你有幸看到这文章，并且感觉我的想法是错的话，可以与我讨论。</p>
 
             
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
         
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">标签</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/composer/">composer</a>
-
-            </div>
-        
         <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/12/01/Docker的简单使用/"  data-tooltip="Docker的简单使用">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -237,7 +253,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/12/2016年总结，以及对于未来的展望/" data-tooltip="2016年总结，以及对于未来的展望">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/24/API文档自动生成/" data-tooltip="API文档自动生成">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -252,17 +268,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -300,7 +316,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/12/01/Docker的简单使用/"  data-tooltip="Docker的简单使用">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -308,7 +324,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/12/2016年总结，以及对于未来的展望/" data-tooltip="2016年总结，以及对于未来的展望">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/24/API文档自动生成/" data-tooltip="API文档自动生成">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -323,17 +339,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -353,17 +369,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>

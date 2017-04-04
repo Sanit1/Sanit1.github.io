@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="土狼的代码窝">
-    <title>Composer的使用 - 土狼的代码窝</title>
+    <title>Docker的简单使用 - 土狼的代码窝</title>
     <meta name="author" content="Sanit">
     
     
@@ -15,16 +15,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
+    <meta name="description" content="最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Composer的使用">
-<meta property="og:url" content="https://sanit1.github.io/2017/03/22/Composer的使用/index.html">
+<meta property="og:title" content="Docker的简单使用">
+<meta property="og:url" content="https://sanit1.github.io/2016/12/01/Docker的简单使用/index.html">
 <meta property="og:site_name" content="土狼的代码窝">
-<meta property="og:description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
-<meta property="og:updated_time" content="2017-04-03T18:16:44.252Z">
+<meta property="og:description" content="最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker">
+<meta property="og:image" content="http://ofnct0qsm.bkt.clouddn.com/dockerpush.png">
+<meta property="og:updated_time" content="2017-04-04T04:49:22.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Composer的使用">
-<meta name="twitter:description" content="什么是Composer　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。">
+<meta name="twitter:title" content="Docker的简单使用">
+<meta name="twitter:description" content="最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker">
+<meta name="twitter:image" content="http://ofnct0qsm.bkt.clouddn.com/dockerpush.png">
     
     
         
@@ -190,13 +192,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Composer的使用
+            Docker的简单使用
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-03-22T15:58:00+08:00">
+    <time itemprop="datePublished" datetime="2016-12-01T01:59:24+08:00">
 	
-		    3月 22, 2017
+		    12月 01, 2016
     	
     </time>
     
@@ -206,30 +208,38 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h3 id="什么是Composer"><a href="#什么是Composer" class="headerlink" title="什么是Composer"></a>什么是Composer</h3><p>　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。<br>  <a id="more"></a></p>
+            <blockquote>
+<p>最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker<br><a id="more"></a></p>
 <hr>
-<h3 id="Composer的安装"><a href="#Composer的安装" class="headerlink" title="Composer的安装"></a>Composer的安装</h3><p>　　composer的安装非常简单，去composer官网(<a href="https://getcomposer.org)。" target="_blank" rel="external">https://getcomposer.org)。</a> Windows的用户可以直接下载.exe进行安装，但是必须自己已经安装好了php并且把php加到了环境变量，然后composer也是需要你的php开启一些基本的扩展，比如curl，fileinfo，openssl 我记得就这些了。当然如果你嫌弃安装麻烦的话，可以直接载composer.phar直接就行了。官方命名成.phar就把这个当作就是一个可执行的程序，其实composer的功能都是写在这个文件里面了。linux用户按照官网的安装命令安装，或者直接下载composer.phar也是可以的。如果出现了问题，要不就是你php没有加到环境变量，或者你php的一些基本扩展没开，不然不可能有问题。</p>
+<h3 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h3><p>　　根据百度百科的定义:Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。其实docker就是一个容器的概念，这个容器可以运行各种镜像。比如你线上的环境是lnmp,你可以打包成一个docker镜像，你自己做负载或者要求多台服务器环境一样的时候，每台装个docker。然后run同样的镜像，那么就能保持各个环境的一致。而且你一台服务器可以跑多个镜像哦。</p>
 <hr>
-<h3 id="Composer的原理"><a href="#Composer的原理" class="headerlink" title="Composer的原理"></a>Composer的原理</h3><p>　　其实composer的原理还是很简单的。</p>
+<h3 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h3><p>　　Docker的安装也很简单，我们打开<a href="https://www.docker.com/" target="_blank" rel="external">docker官网</a>。官网有介绍docker的安装。我简单的来说明一下吧。如果你的电脑是Windows操作系统，最好升级到win10,docker在不是win10专业版或者企业版的电脑上也可以跑，不过这时候你是没法安装docker for windows的，这时候，docker是要在virtualbox运行的。也就相当于你Windows开了个虚拟机来跑docker.我上述讲的那两个版本的Windows能跑docker是因为win10自带虚拟机——Hyper-V。所以能运行docker.至于在linux下的安装，我主要用的Centos，你要想安装docker,你得把你的linux内核升到3以上。大部分人用的都是Centos6.5.他的内核是基于linux2.6的。如果你用的是Centos7.那你什么都不用管，可以直接安装，如果用的是6.5的，你可以选择换成7或者你可以在不升级操作系统，只升级它的内核。至于具体怎么升级，这里不展开讲，我有空也会在我的博客更新的。其实百度下有很多，只不过都是良莠不齐。具体的安装过程很简单，只要你满足我上述讲的条件的机子，因为比较穷，玩不起mac,没在mac下安装过，基本上几分钟就安装好了。<a href="https://docs.docker.com/engine/getstarted/" target="_blank" rel="external">docker安装过程</a></p>
+<hr>
+<h3 id="运行docker容器"><a href="#运行docker容器" class="headerlink" title="运行docker容器"></a>运行docker容器</h3><p>　　安装好Docker后，我们得有个镜像才能让容器跑起来(Windows下直接打开cmd命令行)。首先我们先登录一个docker仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker login --username=xxxxx</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>然后根据提示输入密码，登录成功。然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull 镜像名称:镜像tag</div></pre></td></tr></table></figure></p>
+<p>阿里云有免费的docker仓库，我就拿来用了。然后你需要做的就是等待镜像下载好。下载好后，我们可以通过<figure class="highlight docker"><figcaption><span>images -a```查看已经下载的镜像。如果你直接docker pull的话，应该是从dockerhub上载公共镜像的</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![docker pull成功的结果](http://ofnct0qsm.bkt.clouddn.com/dockerPull.png)</div><div class="line">这就是我下载好的镜像。我们怎么把它跑起来呢？</div></pre></td></tr></table></figure></p>
+<p>docker run -itd –name work  -p  80:80  -v d:/work/:/dockerdata/www/ registry.cn-hangzhou.aliyuncs.com/hsn/lnmp:160930<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我主要讲下几个重要的参数 --name是指你要跑起来容器的名字，-p是端口映射的意思，就是把本机的80端口映射到虚拟机里面的80端口，-v是绑定目录的意思，就是把你本机的目录绑定到docker容器里面。后面跟的就是你的镜像。run好我们的容器之后，我们开始进入容器</div></pre></td></tr></table></figure></p>
+<p>docker attach 你run的容器名字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">这时候我们就进入了我们run起来的容器了。如果你忘记了容器名字，你可以用```docker ps -a ```来查看你所有run的容器。同一个镜像可以被run多个容器。[更多docker run参数说明参考](http://www.infoq.com/cn/articles/docker-command-line-quest/)</div><div class="line">___</div><div class="line">### 在docker容器里面跑项目</div><div class="line">因为我刚才在我把本机的80端口映射到docker容器的80端口。我在容器里面有nginx。所以我只要这样配置就能跑起nginx服务。</div></pre></td></tr></table></figure></p>
+<p> listen 80;<br> server_name book.work.dev;(自己定的域名)<br> index index.html index.htm index.php default.html default.htm default.php;<br> root  /dockerdata/www/book/public;(容器里面项目的入口,对应的就是我挂载的D:/work/book/public)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">自己本机的host这样改</div></pre></td></tr></table></figure></p>
+<p>192.168.10.207  book.work.dev(host域名指向本机的ip,不走公网的dns)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ok,打开浏览器，我们就能愉快的玩耍了。</div><div class="line">___</div><div class="line">#####上传镜像到自己的仓库</div><div class="line">比如有时候我们装了个redis啊，装了个mongodb啊，我们想下次使用的时候容器还会有这些东西。也简单的，我这里以阿里云的docker仓库为例。登录[阿里云docker仓库](https://dev.aliyun.com).然后创建个本地镜像仓库。然后</div></pre></td></tr></table></figure></p>
+<p>docker login –username=xxxxx registry.cn-hangzhou.aliyuncs.com<br>docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]<br>docker push registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]<br>```<br><img src="http://ofnct0qsm.bkt.clouddn.com/dockerpush.png" alt="docker push"><br>每次给你的容器打个tag就能推送到阿里云的docker仓库了。</p>
+<hr>
+<h3 id="如何在本地制作Docker镜像"><a href="#如何在本地制作Docker镜像" class="headerlink" title="如何在本地制作Docker镜像"></a>如何在本地制作Docker镜像</h3><hr>
+<h3 id="Docker的高级玩法-docker-file"><a href="#Docker的高级玩法-docker-file" class="headerlink" title="Docker的高级玩法(docker-file)"></a>Docker的高级玩法(docker-file)</h3><hr>
+<h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h3><hr>
 
             
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
         
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">标签</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/composer/">composer</a>
-
-            </div>
-        
         <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/08/Laravel依赖注入的实现/"  data-tooltip="Laravel依赖注入的实现">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -237,7 +247,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/12/2016年总结，以及对于未来的展望/" data-tooltip="2016年总结，以及对于未来的展望">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/" data-tooltip="存在就更新，不存在就插入在并发情景下一个常见的BUG探讨">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -252,17 +262,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -300,7 +310,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/08/Laravel依赖注入的实现/"  data-tooltip="Laravel依赖注入的实现">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -308,7 +318,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/12/2016年总结，以及对于未来的展望/" data-tooltip="2016年总结，以及对于未来的展望">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/" data-tooltip="存在就更新，不存在就插入在并发情景下一个常见的BUG探讨">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -323,17 +333,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -353,17 +363,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/03/22/Composer的使用/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>

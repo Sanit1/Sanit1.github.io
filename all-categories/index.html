@@ -10,6 +10,8 @@
     <meta name="author" content="Sanit">
     
     
+        <link rel="icon" href="https://sanit1.github.io/assets/images/head_pic.png">
+    
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
@@ -24,6 +26,8 @@
     
         
     
+    
+        <meta property="og:image" content="https://sanit1.github.io/assets/images/head_pic.png"/>
     
     
     
@@ -60,8 +64,23 @@
             <!-- Define author's picture -->
 
 
+
+        
+    
+
 <nav id="sidebar" data-behavior="1">
     <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/head_pic.png" alt="作者的图片"/>
+                </a>
+                <h4 class="sidebar-profile-name">Sanit</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>熟悉主流php框架、redis、mongodb、memcache、基本的sql优化、现代php 正在学习swoole，准备开发一个高性能API的PHP框架</p>
+</h5>
+                
+            </div>
         
         
             <ul class="sidebar-buttons">
@@ -192,22 +211,28 @@
         
 
 
+    
+        
+    
+
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
             <i class="fa fa-remove"></i>
         </div>
         
+            <img id="about-card-picture" src="/assets/images/head_pic.png" alt="作者的图片"/>
+        
             <h4 id="about-card-name">Sanit</h4>
         
-            <div id="about-card-bio"><p>author.bio</p>
+            <div id="about-card-bio"><p>熟悉主流php框架、redis、mongodb、memcache、基本的sql优化、现代php 正在学习swoole，准备开发一个高性能API的PHP框架</p>
 </div>
         
         
             <div id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>author.job</p>
+                <p>PHP开发</p>
 
             </div>
         
@@ -243,17 +268,18 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sanit1.github.io/2017/03/22/Composer的使用/">
-                            <h3 class="media-heading">Composer的使用</h3>
+                        <a class="link-unstyled" href="https://sanit1.github.io/2016/10/24/API文档自动生成/">
+                            <h3 class="media-heading">API文档自动生成</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    2017年3月22日
+                                    2016年10月24日
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><blockquote>
+<p>本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -262,17 +288,58 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sanit1.github.io/2017/03/22/2016年总结，以及对于未来的展望/">
-                            <h3 class="media-heading">2016年总结，以及对于未来的展望</h3>
+                        <a class="link-unstyled" href="https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/">
+                            <h3 class="media-heading">存在就更新，不存在就插入在并发情景下一个常见的BUG探讨</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    2017年3月22日
+                                    2016年11月16日
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><blockquote>
+<p>有些框架直接在 ORM 里面封装了这种 update or insert 的操作，分析源码，可能是直接用 mysql 的 <strong>ON DUPLICATE KEY UPDATE</strong> 或者就是先查询判断存不存在,再插入。而今天我们就来讨论后者。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+                            <h3 class="media-heading">Docker的简单使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年12月1日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><blockquote>
+<p>最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sanit1.github.io/2017/01/08/Laravel依赖注入的实现/">
+                            <h3 class="media-heading">Laravel依赖注入的实现</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年1月8日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><blockquote>
+<p>什么是依赖注入？依赖注入其实和控制反转是一个概念，这个特性在这个框架各个地方都有体现。最傻逼的说法就是没new了，尽可能的解耦代码。就是A类里面的需要依赖到B类，依赖注入的话直接把B类的实例注入到A类实现的方法中，而不是直接在A方法里面new。大大降低了代码的耦合<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -285,7 +352,7 @@
                 data-message-zero="没有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 2 篇文章
+                找到 6 篇文章
             </p>
         </div>
     </div>

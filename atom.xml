@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sanit1.github.io/"/>
-  <updated>2017-03-22T09:05:32.728Z</updated>
+  <updated>2017-04-03T18:16:44.252Z</updated>
   <id>https://sanit1.github.io/</id>
   
   <author>
@@ -16,16 +16,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Composer的使用</title>
+    <link href="https://sanit1.github.io/2017/03/22/Composer%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://sanit1.github.io/2017/03/22/Composer的使用/</id>
+    <published>2017-03-22T07:58:00.000Z</published>
+    <updated>2017-04-03T18:16:44.252Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么是Composer"><a href="#什么是Composer" class="headerlink" title="什么是Composer"></a>什么是Composer</h3><p>　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。<br>  <a id="more"></a></p>
+<hr>
+<h3 id="Composer的安装"><a href="#Composer的安装" class="headerlink" title="Composer的安装"></a>Composer的安装</h3><p>　　composer的安装非常简单，去composer官网(<a href="https://getcomposer.org)。" target="_blank" rel="external">https://getcomposer.org)。</a> Windows的用户可以直接下载.exe进行安装，但是必须自己已经安装好了php并且把php加到了环境变量，然后composer也是需要你的php开启一些基本的扩展，比如curl，fileinfo，openssl 我记得就这些了。当然如果你嫌弃安装麻烦的话，可以直接载composer.phar直接就行了。官方命名成.phar就把这个当作就是一个可执行的程序，其实composer的功能都是写在这个文件里面了。linux用户按照官网的安装命令安装，或者直接下载composer.phar也是可以的。如果出现了问题，要不就是你php没有加到环境变量，或者你php的一些基本扩展没开，不然不可能有问题。</p>
+<hr>
+<h3 id="Composer的原理"><a href="#Composer的原理" class="headerlink" title="Composer的原理"></a>Composer的原理</h3><p>　　其实composer的原理还是很简单的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是Composer&quot;&gt;&lt;a href=&quot;#什么是Composer&quot; class=&quot;headerlink&quot; title=&quot;什么是Composer&quot;&gt;&lt;/a&gt;什么是Composer&lt;/h3&gt;&lt;p&gt;　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能就是用来管理第三方包。我记得以前php也有一个包管理工具的，具体名字忘了，但是有诟病，没有像composer那么好用，所以现在新出来的框架都是composer的。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="composer" scheme="https://sanit1.github.io/tags/composer/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2016年总结，以及对于未来的展望</title>
-    <link href="https://sanit1.github.io/2017/03/22/2016%E5%B9%B4%E6%80%BB%E7%BB%93%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AF%B9%E4%BA%8E%E6%9C%AA%E6%9D%A5%E7%9A%84%E5%B1%95%E6%9C%9B/"/>
-    <id>https://sanit1.github.io/2017/03/22/2016年总结，以及对于未来的展望/</id>
-    <published>2017-03-22T08:25:17.000Z</published>
-    <updated>2017-03-22T09:05:32.728Z</updated>
+    <link href="https://sanit1.github.io/2017/02/12/2016%E5%B9%B4%E6%80%BB%E7%BB%93%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AF%B9%E4%BA%8E%E6%9C%AA%E6%9D%A5%E7%9A%84%E5%B1%95%E6%9C%9B/"/>
+    <id>https://sanit1.github.io/2017/02/12/2016年总结，以及对于未来的展望/</id>
+    <published>2017-02-12T08:25:17.000Z</published>
+    <updated>2017-04-04T04:48:18.731Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>转眼16年就过去了，过年也比较早，1月份就是春节了。去年9月10月的时候感觉时间过的好慢，而后又感觉自己玩了两月，怎么那么快就过完年了。元宵也过了，传统意义上的年已经过完了，是时候开始新的一年了。回顾2016年，我感觉是我技术进步很快的一年，在一家公司呆了也算一年多一个月了，感觉自己不管是技术上还是工作上还是为人处事上都成熟了好多。我先回顾总结下16年，再来展望17年。</p>
-<hr>
 </blockquote>
+<a id="more"></a>
+<hr>
 <h3 id="从php5-4到了php7"><a href="#从php5-4到了php7" class="headerlink" title="从php5.4到了php7"></a>从php5.4到了php7</h3><p>　　php一直被诟病为性能差点，16年年初，php7的稳定版就已经发布了，下面主要讲讲php7不同于php5的一些新特性。</p>
 <ul>
 <li>php7可以指定函数返回类型，7.1版本还可以用void返回类型</li>
@@ -66,7 +92,8 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;转眼16年就过去了，过年也比较早，1月份就是春节了。去年9月10月的时候感觉时间过的好慢，而后又感觉自己玩了两月，怎么那么快就过完年了。元宵也过了，传统意义上的年已经过完了，是时候开始新的一年了。回顾2016年，我感觉是我技术进步很快的一年，在一家
+&lt;p&gt;转眼16年就过去了，过年也比较早，1月份就是春节了。去年9月10月的时候感觉时间过的好慢，而后又感觉自己玩了两月，怎么那么快就过完年了。元宵也过了，传统意义上的年已经过完了，是时候开始新的一年了。回顾2016年，我感觉是我技术进步很快的一年，在一家公司呆了也算一年多一个月了，感觉自己不管是技术上还是工作上还是为人处事上都成熟了好多。我先回顾总结下16年，再来展望17年。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -74,23 +101,212 @@
   </entry>
   
   <entry>
-    <title>Composer的使用</title>
-    <link href="https://sanit1.github.io/2017/03/22/Composer%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://sanit1.github.io/2017/03/22/Composer的使用/</id>
-    <published>2017-03-22T07:58:47.000Z</published>
-    <updated>2017-03-22T09:03:25.485Z</updated>
+    <title>Laravel依赖注入的实现</title>
+    <link href="https://sanit1.github.io/2017/01/08/Laravel%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://sanit1.github.io/2017/01/08/Laravel依赖注入的实现/</id>
+    <published>2017-01-07T18:02:58.000Z</published>
+    <updated>2017-04-04T04:47:53.178Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="什么是Composer"><a href="#什么是Composer" class="headerlink" title="什么是Composer"></a>什么是Composer</h3><p>　　Composer就是PHP的一种包管理工具,你可以当做就像前端js的npm,或者像ruby的gem.它的主要功能</p>
+    <content type="html"><![CDATA[<blockquote>
+<p>什么是依赖注入？依赖注入其实和控制反转是一个概念，这个特性在这个框架各个地方都有体现。最傻逼的说法就是没new了，尽可能的解耦代码。就是A类里面的需要依赖到B类，依赖注入的话直接把B类的实例注入到A类实现的方法中，而不是直接在A方法里面new。大大降低了代码的耦合<br><a id="more"></a></p>
+<hr>
+</blockquote>
+<h3 id="php简单的依赖注入实现"><a href="#php简单的依赖注入实现" class="headerlink" title="php简单的依赖注入实现"></a>php简单的依赖注入实现</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Notify</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SMS</span> <span class="keyword">implements</span> <span class="title">Notify</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'send SMS'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Voice</span> <span class="keyword">implements</span> <span class="title">Notify</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'send Voice'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sendNotify</span><span class="params">(Notify $notify)</span></span></div><div class="line">    &#123;</div><div class="line">        $notify-&gt;send();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$user = <span class="keyword">new</span> User;</div><div class="line">$user-&gt;sendNotify(<span class="keyword">new</span> SMS);</div></pre></td></tr></table></figure>
+<p>这里我简化了日常的业务逻辑。我们要对一个用户发送通知，可以用短信发送也可以通过语音发送等等。如果不用依赖注入，我们直接在User类你们new一个SMS或者Voice类。当然也是没问题的。但是突然有一天，老板说改成Email对用户发送通知，好了 我们User类要改，具体调用user类的地方也要改。当然实际的业务逻辑更复杂。在日积月累的情况下代码就变得更不好维护了。依赖注入让我们的业务中调用的是接口，而不是具体的类，实现了代码的解耦。这样子，就算老板让我们改成用邮件对用户发送通知，我们只要新建个实现了Notify接口的Email类，然后在具体调用的时候传这个Email类过去就行了。</p>
+<p>　　但是，我们不免看到这样new来new去还是有点多(创建类是必不可少的)，Laravel的代码很优雅，我们很少看到它new来new去。那么他是怎么做到的呢？</p>
+<hr>
+<h3 id="Laravel中依赖注入的实现"><a href="#Laravel中依赖注入的实现" class="headerlink" title="Laravel中依赖注入的实现"></a>Laravel中依赖注入的实现</h3><p>　　在用Laravel框架的时候，我们在控制器只要把类注入进去，就能直接调用，貌似没有看到具体在哪里new的。那是因为Laraver的控制器要求你都要继承它的BaseController。框架在运行的时候直接从容器中解析你注入进去的类给你实例化了。什么是容器，就是一个智能并高级的工厂。容器不需要被告知如何构建对象，它是通过PHP的反射类<a href="!http://php.net/manual/zh/class.reflectionclass.php">ReflectionClass</a>来解析出具体的对象。所以我们就看不到具体在使用Laravel的时候，看它一直在注入类，却看不到它具体是在哪里new的。</p>
+<p><b>容器类(Container)的实现原理</b></p>
+<p>Larvel的容器类在/vendor/laravel/framework/src/Illuminate/Container/Container。我们打开可以看到一个非常长的类。咋一看不知道干嘛的，看不懂，一开始我也是。所以我简化了下容器，自己写了个容器类。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Container</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $bindings = [];</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bind</span><span class="params">($abstract, $concrete = null, $shared = false)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(! $concrete <span class="keyword">instanceof</span> Closure)&#123;</div><div class="line">            $concrete = <span class="keyword">$this</span>-&gt;getClosure($abstract,$concrete);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">$this</span>-&gt;bindings[$abstract] = compact(<span class="string">'concrete'</span>, <span class="string">'shared'</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getClosure</span><span class="params">($abstract, $concrete)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">($c, $parameters = [])</span> <span class="title">use</span> <span class="params">($abstract, $concrete)</span></span></div><div class="line">        &#123;</div><div class="line">            $method = ($abstract == $concrete) ? <span class="string">'build'</span> : <span class="string">'make'</span>;</div><div class="line">            <span class="keyword">return</span> $c-&gt;$method($concrete,$parameters);</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">make</span><span class="params">($abstract,$parameters = [])</span></span></div><div class="line">    &#123;</div><div class="line">        $concrete = <span class="keyword">$this</span>-&gt;getConcrete($abstract);</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;isBuildable($concrete, $abstract)) &#123;</div><div class="line">            $object = <span class="keyword">$this</span>-&gt;build($concrete,$parameters);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            $object = <span class="keyword">$this</span>-&gt;make($concrete,$parameters);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $object;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">isBuildable</span><span class="params">($concrete, $abstract)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> $concrete === $abstract || $concrete <span class="keyword">instanceof</span> Closure;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">getConcrete</span><span class="params">($abstract)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(! <span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;bindings[$abstract]))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> $abstract;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;bindings[$abstract][<span class="string">'concrete'</span>];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">build</span><span class="params">($concrete,$parameters=[])</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>($concrete <span class="keyword">instanceof</span> Closure)&#123;</div><div class="line">            <span class="keyword">return</span> $concrete(<span class="keyword">$this</span>,$parameters);</div><div class="line">        &#125;</div><div class="line">        $reflector = <span class="keyword">new</span> ReflectionClass($concrete);</div><div class="line">        <span class="keyword">if</span>(! $reflector-&gt;isInstantiable()) &#123;</div><div class="line">            <span class="keyword">return</span> $message= <span class="string">"Target [$concrete] is not instantiable."</span>;</div><div class="line">        &#125;</div><div class="line">        $constructor = $reflector-&gt;getConstructor();</div><div class="line">        <span class="keyword">if</span> (is_null($constructor)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> $concrete;</div><div class="line">        &#125;</div><div class="line">        $dependencies = $constructor-&gt;getParameters();</div><div class="line">        $instances = <span class="keyword">$this</span>-&gt;getDependencies($dependencies,$parameters);</div><div class="line">        <span class="keyword">return</span> $reflector-&gt;newInstanceArgs($instances);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">getDependencies</span><span class="params">($parameters,array $primitives = [])</span></span></div><div class="line">    &#123;</div><div class="line">        $dependencies = [];</div><div class="line">        <span class="keyword">foreach</span> ($parameters <span class="keyword">as</span> $parameter)</div><div class="line">        &#123;</div><div class="line">            $dependency = $parameter-&gt;getClass();</div><div class="line">            <span class="keyword">if</span>(array_key_exists($parameter-&gt;name,$primitives))&#123;</div><div class="line">                $dependencies[] = $primitives[$parameter-&gt;name];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(is_null($dependency))&#123;</div><div class="line">                $dependencies[] = <span class="keyword">NULL</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                $dependencies[] = <span class="keyword">$this</span>-&gt;resolveClass($parameter);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">array</span>) $dependencies;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">resolveClass</span><span class="params">(ReflectionParameter $parameter)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;make($parameter-&gt;getClass()-&gt;name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Notify</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SMS</span> <span class="keyword">implements</span> <span class="title">Notify</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'SMS send'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mail</span> <span class="keyword">implements</span> <span class="title">Notify</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'Mail send'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Push</span> <span class="keyword">implements</span> <span class="title">Notify</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">send</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'Push send'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Message</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $notifyTool;</div><div class="line">    <span class="keyword">protected</span> $config;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(Notify $notify,$parameters = [])</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;notifyTool = $notify;</div><div class="line">        <span class="keyword">$this</span>-&gt;config = $parameters;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sendMessage</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;notifyTool-&gt;send();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$app = <span class="keyword">new</span> Container();</div><div class="line">$app-&gt;bind(<span class="string">'Notify'</span>,<span class="string">'Sms'</span>);</div><div class="line">$app-&gt;bind(<span class="string">'message'</span>,<span class="string">'Message'</span>);</div><div class="line">$msg = $app-&gt;make(<span class="string">'message'</span>,[<span class="string">'parameters'</span>=&gt;<span class="string">'额外参数'</span>]);</div><div class="line">$msg-&gt;sendMessage();</div></pre></td></tr></table></figure>
+<p>容器的实现过程主要依赖php的反射类，一个参数传过来的时候，通过反射可以知道这个类是否可以被实例化，方法存不存在。你看,这样的话我们是不是基本上没有new了。其实不是没new了，而是通过反射，只要写好这样一个通用的容器，new的过程还是有的，只不过都在容器里面了。我写的这个容器还是要通过手动绑定参数来实现，Laravel的服务容器当然更高级，Laravel容器的核心代码基本都在我这里体现了。Laravel的容器能根据类的依赖需求，自动在已经注册、绑定的一堆实例中找到符合需求的，自动注入。</p>
+<p>　　到这里，依赖注入的实现基本上也讲完了。Laravel还有个Facade(门面),其实我感觉这个没多大用,但是有些人在刚接触Laravel的时候有困惑，我稍微带过一下。门面其实把容器里面绑定好的类在套一层，然后用php的魔术方法<code>__callStatic()</code>来实现像是静态的调用不是静态的各个方法。</p>
+<h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h3><p>　　代码想要实现完全解耦是不可能的。我们只能通过巧妙的设计，让耦合度尽可能的降低，方便维护。java的依赖在配置文件用xml配置好，然后就可以实现依赖注入了。由于表达能力有限，自己理解能力也不是完全的彻底。如果看到这篇文章还有疑惑的可以继续参考以下文章：</p>
+<p><a href="http://laravelacademy.org/post/769.html" target="_blank" rel="external">http://laravelacademy.org/post/769.html</a> </p>
+<p><a href="https://segmentfault.com/a/1190000002411255" target="_blank" rel="external">https://segmentfault.com/a/1190000002411255</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;什么是Composer&quot;&gt;&lt;a href=&quot;#什么是Composer&quot; class=&quot;headerlink&quot; title=&quot;什么是Composer&quot;&gt;&lt;/a&gt;什么是Composer&lt;/h3&gt;&lt;p&gt;　　Composer就是PHP的一种包管理工具,你可以当做就像前端j
+      &lt;blockquote&gt;
+&lt;p&gt;什么是依赖注入？依赖注入其实和控制反转是一个概念，这个特性在这个框架各个地方都有体现。最傻逼的说法就是没new了，尽可能的解耦代码。就是A类里面的需要依赖到B类，依赖注入的话直接把B类的实例注入到A类实现的方法中，而不是直接在A方法里面new。大大降低了代码的耦合&lt;br&gt;
     
     </summary>
     
     
-      <category term="composer" scheme="https://sanit1.github.io/tags/composer/"/>
+  </entry>
+  
+  <entry>
+    <title>Docker的简单使用</title>
+    <link href="https://sanit1.github.io/2016/12/01/Docker%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>https://sanit1.github.io/2016/12/01/Docker的简单使用/</id>
+    <published>2016-11-30T17:59:24.000Z</published>
+    <updated>2017-04-04T04:49:22.245Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker<br><a id="more"></a></p>
+<hr>
+<h3 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h3><p>　　根据百度百科的定义:Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。其实docker就是一个容器的概念，这个容器可以运行各种镜像。比如你线上的环境是lnmp,你可以打包成一个docker镜像，你自己做负载或者要求多台服务器环境一样的时候，每台装个docker。然后run同样的镜像，那么就能保持各个环境的一致。而且你一台服务器可以跑多个镜像哦。</p>
+<hr>
+<h3 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h3><p>　　Docker的安装也很简单，我们打开<a href="https://www.docker.com/" target="_blank" rel="external">docker官网</a>。官网有介绍docker的安装。我简单的来说明一下吧。如果你的电脑是Windows操作系统，最好升级到win10,docker在不是win10专业版或者企业版的电脑上也可以跑，不过这时候你是没法安装docker for windows的，这时候，docker是要在virtualbox运行的。也就相当于你Windows开了个虚拟机来跑docker.我上述讲的那两个版本的Windows能跑docker是因为win10自带虚拟机——Hyper-V。所以能运行docker.至于在linux下的安装，我主要用的Centos，你要想安装docker,你得把你的linux内核升到3以上。大部分人用的都是Centos6.5.他的内核是基于linux2.6的。如果你用的是Centos7.那你什么都不用管，可以直接安装，如果用的是6.5的，你可以选择换成7或者你可以在不升级操作系统，只升级它的内核。至于具体怎么升级，这里不展开讲，我有空也会在我的博客更新的。其实百度下有很多，只不过都是良莠不齐。具体的安装过程很简单，只要你满足我上述讲的条件的机子，因为比较穷，玩不起mac,没在mac下安装过，基本上几分钟就安装好了。<a href="https://docs.docker.com/engine/getstarted/" target="_blank" rel="external">docker安装过程</a></p>
+<hr>
+<h3 id="运行docker容器"><a href="#运行docker容器" class="headerlink" title="运行docker容器"></a>运行docker容器</h3><p>　　安装好Docker后，我们得有个镜像才能让容器跑起来(Windows下直接打开cmd命令行)。首先我们先登录一个docker仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker login --username=xxxxx</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>然后根据提示输入密码，登录成功。然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull 镜像名称:镜像tag</div></pre></td></tr></table></figure></p>
+<p>阿里云有免费的docker仓库，我就拿来用了。然后你需要做的就是等待镜像下载好。下载好后，我们可以通过<figure class="highlight docker"><figcaption><span>images -a```查看已经下载的镜像。如果你直接docker pull的话，应该是从dockerhub上载公共镜像的</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![docker pull成功的结果](http://ofnct0qsm.bkt.clouddn.com/dockerPull.png)</div><div class="line">这就是我下载好的镜像。我们怎么把它跑起来呢？</div></pre></td></tr></table></figure></p>
+<p>docker run -itd –name work  -p  80:80  -v d:/work/:/dockerdata/www/ registry.cn-hangzhou.aliyuncs.com/hsn/lnmp:160930<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我主要讲下几个重要的参数 --name是指你要跑起来容器的名字，-p是端口映射的意思，就是把本机的80端口映射到虚拟机里面的80端口，-v是绑定目录的意思，就是把你本机的目录绑定到docker容器里面。后面跟的就是你的镜像。run好我们的容器之后，我们开始进入容器</div></pre></td></tr></table></figure></p>
+<p>docker attach 你run的容器名字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">这时候我们就进入了我们run起来的容器了。如果你忘记了容器名字，你可以用```docker ps -a ```来查看你所有run的容器。同一个镜像可以被run多个容器。[更多docker run参数说明参考](http://www.infoq.com/cn/articles/docker-command-line-quest/)</div><div class="line">___</div><div class="line">### 在docker容器里面跑项目</div><div class="line">因为我刚才在我把本机的80端口映射到docker容器的80端口。我在容器里面有nginx。所以我只要这样配置就能跑起nginx服务。</div></pre></td></tr></table></figure></p>
+<p> listen 80;<br> server_name book.work.dev;(自己定的域名)<br> index index.html index.htm index.php default.html default.htm default.php;<br> root  /dockerdata/www/book/public;(容器里面项目的入口,对应的就是我挂载的D:/work/book/public)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">自己本机的host这样改</div></pre></td></tr></table></figure></p>
+<p>192.168.10.207  book.work.dev(host域名指向本机的ip,不走公网的dns)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ok,打开浏览器，我们就能愉快的玩耍了。</div><div class="line">___</div><div class="line">#####上传镜像到自己的仓库</div><div class="line">比如有时候我们装了个redis啊，装了个mongodb啊，我们想下次使用的时候容器还会有这些东西。也简单的，我这里以阿里云的docker仓库为例。登录[阿里云docker仓库](https://dev.aliyun.com).然后创建个本地镜像仓库。然后</div></pre></td></tr></table></figure></p>
+<p>docker login –username=xxxxx registry.cn-hangzhou.aliyuncs.com<br>docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]<br>docker push registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]<br>```<br><img src="http://ofnct0qsm.bkt.clouddn.com/dockerpush.png" alt="docker push"><br>每次给你的容器打个tag就能推送到阿里云的docker仓库了。</p>
+<hr>
+<h3 id="如何在本地制作Docker镜像"><a href="#如何在本地制作Docker镜像" class="headerlink" title="如何在本地制作Docker镜像"></a>如何在本地制作Docker镜像</h3><hr>
+<h3 id="Docker的高级玩法-docker-file"><a href="#Docker的高级玩法-docker-file" class="headerlink" title="Docker的高级玩法(docker-file)"></a>Docker的高级玩法(docker-file)</h3><hr>
+<h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h3><hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>存在就更新，不存在就插入在并发情景下一个常见的BUG探讨</title>
+    <link href="https://sanit1.github.io/2016/11/16/%E5%AD%98%E5%9C%A8%E5%B0%B1%E6%9B%B4%E6%96%B0%EF%BC%8C%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%B0%B1%E6%8F%92%E5%85%A5%E5%9C%A8%E5%B9%B6%E5%8F%91%E6%83%85%E6%99%AF%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%B8%B8%E8%A7%81%E7%9A%84BUG%E6%8E%A2%E8%AE%A8/"/>
+    <id>https://sanit1.github.io/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/</id>
+    <published>2016-11-15T17:58:13.000Z</published>
+    <updated>2017-04-04T04:47:02.097Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>有些框架直接在 ORM 里面封装了这种 update or insert 的操作，分析源码，可能是直接用 mysql 的 <strong>ON DUPLICATE KEY UPDATE</strong> 或者就是先查询判断存不存在,再插入。而今天我们就来讨论后者。<br><a id="more"></a></p>
+<hr>
+<h3 id="BUG举例"><a href="#BUG举例" class="headerlink" title="BUG举例"></a>BUG举例</h3><p>　　因为这个bug是公司的实际业务逻辑，所以我下面不贴出具体的代码，以伪代码说明。一开始写的时候大家都在赶工，没考虑到各种情况，业务都稳定的情况下，突然有一天，有人告诉我，线上的公司表出现两条一某一样的公司信息，申请人也是同一个，什么都一样。我仔细回来检查，具体的业务代码是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$company = db-&gt;where(&apos;根据输入的信息&apos;)-&gt;select();</div><div class="line">if(!empty($company)&#123;</div><div class="line">    db-&gt;update(&apos;根据输入的信息&apos;);</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">    db-&gt;insert(&apos;根据输入的信息&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>　　我一开始不相信这样的代码会出现bug,自己拿号不断去试，结果自己怎么提交最多存进去一条啊，有记录就会更新。我感觉是不是测试坑我。因为还有种极端的情况下我没考虑。那就是万恶的并发！！！于是我就开始去用<a href="http://baike.baidu.com/link?url=oxqKIXKhh3k-fc2wDXDyAevQItL2br4Xit6ozi2QhN5eiRa99baS7ksPYSdZKiR8A6bKCYXzWaE5nsukhaGzyK" target="_blank" rel="external">apache</a>自带的<a href="http://baike.baidu.com/subview/32903/6675457.htm#viewPageContent" target="_blank" rel="external">ab</a>程序去模拟并发。至于这个工具具体怎么用，我也只会基础的，这里就不继续展开讲了。我就用基础的模拟<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ab -c 3 -n 3 -p post.txt application/x-www-form-urlencoded http://xxx.xxx.xxx/xx</div></pre></td></tr></table></figure></p>
+<p><code>-n</code>表示总的请求数，<code>-c</code>表示并发数，<code>-p</code>表示请求方式是 post ,<code>post.txt</code>就是我要请求接口的数据，里面就是<code>a=xx&amp;b=xxx</code>这种格式，再后面跟着的就是接口的请求地址了。因为这里不想插爆库，就直接用小点的数量模拟，然后发现数据库里面确实存进去了3条一模一样的数据。这就是造成 bug 最直接的原因，前端没有做判断，可能别人手抖，直接点了两下，直接post了两次，就像并发一样。</p>
+<hr>
+<h3 id="目前我的解决办法"><a href="#目前我的解决办法" class="headerlink" title="目前我的解决办法"></a>目前我的解决办法</h3><p>　　其实这完全是可以避免的 bug，因为既然我们有这样的业务逻辑，但是表结构没这么设计，然后因为有历史遗留数据的问题，所以很蛋疼。先来说说第一种解决办法吧</p>
+<ul>
+<li><strong>修改表结构</strong></li>
+</ul>
+<p>既然业务这么设计，我们只要给表增加唯一索引，这样子，来再多的并发，同样的数据只能有一条。由于我只是个小兵，没有改数据库的权限，然后根据具体的业务，产品告诉我也还是可以允许这样重复的数据存在的（此刻我已经泪奔 T . T）。所以我的业务设计本身就有缺陷，又要防止这种不必要的并发，所以改唯一索引对我的情况是没用的。其实大部分情况下，一般的处理办法就是给这个表建立一个或者多个 index key(索引)。这样数据库就能帮我们保证数据的唯一性。其实我一开始说的 mysql 自带的 ON DUPLICATE KEY UPDATE 也是需要有索引才能用的。</p>
+<ul>
+<li><strong>锁表</strong></li>
+</ul>
+<p>既然是为了防止并发的重复数据提交，锁表轻松解决问题！什么是锁表，所谓的锁表就是——这表被我锁住了，其它人想进来，得先等老子操作完，解锁才给你用。这样并发进来的情况下，就算是并发，还是有先后顺序的，第一个人只要锁住表，后面的并发得等第一个人执行完，才能使用表，这样就会走else分支，直接更新，而不会继续插入。</p>
+<ul>
+<li><strong>使用队列</strong></li>
+</ul>
+<p>这样场景下，并发就像一条直线的数据进来就像这样<br><img src="http://ofnct0qsm.bkt.clouddn.com/%E5%B9%B6%E5%8F%91.png" alt="并发队列处理"><br>这样子我们就可以错开并发，从队列依次取，就会执行正常的业务逻辑。</p>
+<ul>
+<li><strong>数据先经缓存，再入库</strong></li>
+</ul>
+<p>这其实就是一个比队列更简易的处理方式，因为这种业务逻辑下，我们并没有完全发挥出队列的全部优势，可以先让数据经过一遍缓存，缓存中帮我们过滤了那些重复的数据，然后我们执行正常的逻辑也不影响。代码逻辑可以这样写<br>app(‘redis’)-&gt;setnx(md5(请求的参数)); 再根据你的实际业务需求设置这个key的过期时间。只有在set成功的情况下再进入库(测试过，就算并发进来。对用一个key只可能set成功一次)。setnx命令参考(<a href="http://doc.redisfans.com/string/setnx.html" target="_blank" rel="external">http://doc.redisfans.com/string/setnx.html</a>)</p>
+<h3 id="问题引伸的思考"><a href="#问题引伸的思考" class="headerlink" title="问题引伸的思考"></a>问题引伸的思考</h3><p>　　其实在一些小公司，连个DBA都没有的情况下。因为业务人员的不细心已经工作人员敲代码只为量不为结果，可能就导致这样的问题出现。我也是通过这个问题知道了一些本来我不熟悉的知识。我不知道大公司的处理流程是怎样的，肯定不会有这样的问题。但是引发了我的思考，是不是大公司他们对于一些并发或者操作频繁的数据，都是先进过一层像redis之类的缓存层，然后再入库到mysql或者其它数据库。这就相当于一个从缓存到磁盘的过程，貌似也符合操作系统的逻辑。我只是个小打字员，也没法接触大公司的业务，只能自己想想。如果你有幸看到这文章，并且感觉我的想法是错的话，可以与我讨论。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;有些框架直接在 ORM 里面封装了这种 update or insert 的操作，分析源码，可能是直接用 mysql 的 &lt;strong&gt;ON DUPLICATE KEY UPDATE&lt;/strong&gt; 或者就是先查询判断存不存在,再插入。而今天我们就来讨论后者。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>API文档自动生成</title>
+    <link href="https://sanit1.github.io/2016/10/24/API%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/"/>
+    <id>https://sanit1.github.io/2016/10/24/API文档自动生成/</id>
+    <published>2016-10-23T17:50:00.000Z</published>
+    <updated>2017-04-04T04:46:16.335Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了<br><a id="more"></a></p>
+<hr>
+<h3 id="apidoc简介"><a href="#apidoc简介" class="headerlink" title="apidoc简介"></a>apidoc简介</h3><p>　　apidoc是node的一个插件，它的功能就是能让把我们的代码注释生成api文档。它支持php java javascript python等多中语言。因为写接口的同学通常很烦写完接口还得写文档，文档更新又麻烦。apidoc不仅支持项目的版本，也支持api的版本。在我所接触过的文档生成工具里面，这个是我感觉比较好用的。</p>
+<hr>
+<h3 id="apidoc的安装"><a href="#apidoc的安装" class="headerlink" title="apidoc的安装"></a>apidoc的安装</h3><p>　　apidoc是node的一个插件，那么它的安装就依赖node。node的具体安装我这里就不详细说了，去node官网下包,解压，编译然后安装。直接执行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install apidoc -g</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h3 id="samba的安装"><a href="#samba的安装" class="headerlink" title="samba的安装"></a>samba的安装</h3><p>　　samba的安装也很简单，本人用的是CentOS，我直接执行<figure class="highlight plain"><figcaption><span>install samba```就安装好了。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">___</div><div class="line">### samba的配置</div></pre></td></tr></table></figure></p>
+<pre><code>[public]
+comment = Public Stuff
+path = /share/doc  你需要共享文件夹的路径
+browseable = yes  可浏览性 
+guest ok = yes  是否允许访客
+public = yes  是否可上传
+writable = yes  是否可写
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">我自己装的时候也都是这么配置的，注意，这个samba需要你关闭你的防火墙，还得把你共享的目录赋予777的权限（貌似755就够了，我直接给了777）。我这边还遇到过一个很坑爹的问题，就是这样配置了，用Windows访问这个共享目录的时候，要求我输入用户名和密码。其实主要还得把上面的```security = user```改成```security = share```。samba也是支持用户管理的，就是可以分配账号密码的，具体的就不展开介绍了。</div><div class="line">___</div><div class="line">### apidoc的使用</div><div class="line">　　例如我们在代码里面下了这样的一段注释:</div></pre></td></tr></table></figure>
+<p>/**</p>
+<ul>
+<li>@api {get post} /brand/:id/:name/:new 这里中括号里面填的的是请求方式（GET POST OPTION DELETE等），后面填的是路由</li>
+<li>@apiGroup brandList API接口所在的组名称</li>
+<li>@apiName  brands  API接口名称</li>
+<li>@apiVersion 1.0.1 API接口版本</li>
+<li>@apiDescription  API接口的描述<br>*</li>
+<li>@apiParam (入参) {Number{1-9999}}()这个括号里面的天的参数的组，括号里面相同的会被放在同一个表格里面 id=0 请求参数 大括号里面填的是参数类型 里面的大括号表示值的范围 后面就是参数的名称和默认值</li>
+<li>@apiParam (入参) {String=”a”,”b”,”c”} name 品牌名称,等于号表示允许值</li>
+<li>@apiParam (入参) {Boolean} new </li>
+<li>@apiParam (入参) {Number} [test] 如果参数套上[]这样的中括号，表明这个值是个可选的值<br>*</li>
+<li>@apiParamExample {json} 接口返回值</li>
+<li>{</li>
+<li>“code” : 0,</li>
+<li>“message” : “success”,</li>
+<li>“data” : {</li>
+<li>“result” : “ok”</li>
+<li>}</li>
+<li>}</li>
+<li>@apiSampleRequest  下面就是一个模拟请求器，可以帮我们调试接口</li>
+<li><p><a href="http://www.work.dev" target="_blank" rel="external">http://www.work.dev</a><br><em>
+</em>/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">基本上用这些已经足够了，其他的用法可以参考它的官网:http://apidocjs.com/</div><div class="line">___</div><div class="line">####生成apidoc</div><div class="line">　　假如我在我的控制器里面写了这样一段注释:</div></pre></td></tr></table></figure>
+<p>/**</p>
+<ul>
+<li>@api {GET} /user_info 获取用户信息接口</li>
+<li>@apiGroup User</li>
+<li>@apiVersion 2.0.0</li>
+<li>@apiDescription 获取用户信息<br>*</li>
+<li>@apiParam (入参) {String} token 登录成功后客户端返回的token<br>*</li>
+<li>@apiSuccessExample Success-Response:</li>
+<li>{</li>
+<li>“code”: 0,</li>
+<li>“message”: “ok”</li>
+<li>“data”: {</li>
+<li>“name”: “1”,//状态 0:启用 1:停用</li>
+<li>“role”: “1”,//1管理员，0是普通员工</li>
+<li>“sex”: “1”,//1表示男性，2表示女性</li>
+<li>}</li>
+<li>}<br>*</li>
+<li>@apiSampleRequest</li>
+<li><a href="http://api.test.com/user_info" target="_blank" rel="external">http://api.test.com/user_info</a><br><em>
+</em>/<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">先cd到项目里面</div><div class="line">然后执行这样的语句:</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>apidoc -i app/Http/Controllers -o \115.28.231.211\public\</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  因为我samba共享的是这样一个文件夹，并且在这个里面放文档。然后我们来看下生成的结果</div><div class="line"> ![](http://ofnct0qsm.bkt.clouddn.com/apidoc%E7%94%9F%E6%88%90%E7%9A%84%E7%BB%93%E6%9E%9C.png)</div><div class="line"> 这时候我们直接点击index.html可以直接看到这样的静态页面:</div><div class="line"> ![](http://ofnct0qsm.bkt.clouddn.com/%E6%89%93%E5%BC%80%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%BB%93%E6%9E%9C.png)</div><div class="line"> ___</div><div class="line">### 后话</div><div class="line"> 　　到这里，我们就已经很方便的能运用apidoc了，我们可以自己直接写好接口的时候直接写注释，一句命令写到开了samba的服务器上，然后直接访问静态页面，如果不想这样赤裸裸的访问静态页面，可以用node或者nginx直接绑上去，这里就不继续展开讲了。</div><div class="line">___</div><div class="line">### 后续补充</div><div class="line"></div><div class="line">　　其实在使用中的时候会发现一些很坑爹的问题，就是GroupName没法用中文，但是其他地方可以用中文。毕竟这个是国外大佬发明的，不是国人的产物，有存在这样的问题也在所难免。我不断的搜，发现github上有人给他提issure。也有给出了解决方案，apidoc的语法其实是支持引用的，所以我们可以这样定义</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>@apiDefine name 测试中文<br>*/<br><code>然后我们怎么使用呢。可以直接</code>@apiUse name <code>也可以直接在注释里面写</code>name```,这样就可以使用中文了。</li>
+</ul>
+<p>　　<font color="red">这个东西唯一让我不爽的就是有可能一大段注释只是为了生成接口文档！！！其它真的很好用</font></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了&lt;br&gt;
+    
+    </summary>
+    
     
   </entry>
   
