@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sanit1.github.io/"/>
-  <updated>2017-04-23T15:50:39.508Z</updated>
+  <updated>2017-04-23T16:22:48.390Z</updated>
   <id>https://sanit1.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://sanit1.github.io/2017/03/22/Composer%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://sanit1.github.io/2017/03/22/Composer的使用/</id>
     <published>2017-03-22T07:58:00.000Z</published>
-    <updated>2017-04-23T15:50:39.508Z</updated>
+    <updated>2017-04-23T16:22:48.390Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>有段时间没更新博客了，自己最近也很忙。今年年初换了一份新工作，我不知道自己是不是成功的跳槽，这段时间很迷茫。好久没更新博客了，这篇文章也写的断断续续的。基本上自己也熟练掌握composer了，就相当于给自己的巩固，就写一篇出来</p>
@@ -33,11 +33,29 @@
 <hr>
 <h3 id="Composer的原理"><a href="#Composer的原理" class="headerlink" title="Composer的原理"></a>Composer的原理</h3><p>　　其实composer的原理还是很简单的。比如你用composer装一个第三方包的时候，要不你指定代码的git源地址，或者你指定一个包名。如果你输入的是包名，那么它就会搜<a href="https://packagist.org" target="_blank" rel="external">https://packagist.org</a> 上面的包名;如果你指定repositories,然后它也会去你指定的地方载那个包。</p>
 <hr>
-<h3 id="Composer的使用"><a href="#Composer的使用" class="headerlink" title="Composer的使用"></a>Composer的使用</h3><p>　　composer只要装好了，使用的话很简单。比如我感觉Laravel的ORM很好用，而且我也在packagist找到了它的包。然后我执行<figure class="highlight plain"><figcaption><span>require illuminate/database```这个命令。然后就能看到下图</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">![composer安装包](http://ofnct0qsm.bkt.clouddn.com/composer_anzhuang.png)</div><div class="line">当然，你也可以配置好composer.json文件之后，直接执行composer install.执行完毕后，composer除了帮我们把别人的包的代码下载下来，也会帮你完成自动加载，我们可以看到在vendor目录下面多了一个```autoload.php```,只要我们在其它地方要用到包里面的代码，只要```require &apos;/vendor/autoload.php&apos;;```就可以了。</div><div class="line"> - composer.lock的作用</div><div class="line"> </div><div class="line"> 有了composer.json为什么还要生成composer.lock呢，composer的作者不是多此一举，很多时候很多包都有小版本来一直维护升级，修复bug，所以就算我们用了laravel 5.4,但是随着时间的推移，它也会渐渐的从5.4.1到5.4.xx,所以一般我们在安装composer包的时候，一般我们都是只指定了一个版本，对于里面的小版本我们一般都是```.*```。这时候，composer.lock的作用就体现出来了，它记录的是我们这边这次composer装的到底是哪个小版本，把具体的信息都记录下来了，所以作者以.lock结尾还是很有道理的。</div><div class="line"> </div><div class="line"> - composer install; composer require; composer update的区别以及用法</div><div class="line"> </div><div class="line"> 很多刚接触composer的新用户可能感觉这三个命令区别不大，反正都可以用。确实，一开始我也没感觉，直到有一天我要安装个新包，然后很纠结要不要把composer.json 以及composer.lock传到版本库里面去，其实是应该要的。有时候我们会遇到这样的问题，就是我们本地的代码跟线上的代码都装了同一个包，但是因为小版本的不同导致线上代码出bug。我先来说说用的最多的composer require</div><div class="line"> </div><div class="line"> ```composer require &quot;包名:版本号&quot;</div></pre></td></tr></table></figure></p>
-<p> 这是他的用法，如果我在本地开发的时候安装了一个composer包，大半个月后，要上线(一般vendor目录的第三方包都没有在代码版本库里面的)。然后我们再在线上执行跟我们当时一样的命令，可能线上的包跟线下的包代码有所不同。虽然基本上没什么大问题，但是有时候遇到了能让你很蛋疼。</p>
+<h3 id="Composer的使用"><a href="#Composer的使用" class="headerlink" title="Composer的使用"></a>Composer的使用</h3><p>　　composer只要装好了，使用的话很简单。比如我感觉Laravel的ORM很好用，而且我也在packagist找到了它的包。然后我执行 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer require illuminate/database</div></pre></td></tr></table></figure>
+<p>这个命令。然后就能看到下图</p>
+<p><img src="http://ofnct0qsm.bkt.clouddn.com/composer_anzhuang.png" alt="composer安装包"><br>当然，你也可以配置好composer.json文件之后，直接执行composer install.执行完毕后，composer除了帮我们把别人的包的代码下载下来，也会帮你完成自动加载，我们可以看到在vendor目录下面多了一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">autoload.php</div></pre></td></tr></table></figure></p>
+<p>只要我们在其它地方要用到包里面的代码，只要</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">require&apos;/vendor/autoload.php&apos;;</div></pre></td></tr></table></figure>
+<p>就可以了。</p>
+<ul>
+<li><b>composer.lock的作用</b></li>
+</ul>
+<p>有了composer.json为什么还要生成composer.lock呢，composer的作者不是多此一举，很多时候很多包都有小版本来一直维护升级，修复bug，所以就算我们用了laravel 5.4,但是随着时间的推移，它也会渐渐的从5.4.1到5.4.xx,所以一般我们在安装composer包的时候，一般我们都是只指定了一个版本，对于里面的小版本我们一般都是.*。这时候，composer.lock的作用就体现出来了，它记录的是我们这边这次composer装的到底是哪个小版本，把具体的信息都记录下来了，所以作者以.lock结尾还是很有道理的。</p>
+<ul>
+<li><b>composer install; composer require; composer update的区别以及用法</b></li>
+</ul>
+<p>很多刚接触composer的新用户可能感觉这三个命令区别不大，反正都可以用。确实，一开始我也没感觉，直到有一天我要安装个新包，然后很纠结要不要把composer.json 以及composer.lock传到版本库里面去，其实是应该要的。有时候我们会遇到这样的问题，就是我们本地的代码跟线上的代码都装了同一个包，但是因为小版本的不同导致线上代码出bug。我先来说说用的最多的composer require</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer require &quot;包名:版本号&quot;</div></pre></td></tr></table></figure>
+<p>这是他的用法，如果我在本地开发的时候安装了一个composer包，大半个月后，要上线(一般vendor目录的第三方包都没有在代码版本库里面的)。然后我们再在线上执行跟我们当时一样的命令，可能线上的包跟线下的包代码有所不同。虽然基本上没什么大问题，但是有时候遇到了能让你很蛋疼。</p>
 <p> composer install的用法</p>
- <figure class="highlight plain"><figcaption><span>install```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">执行这样的命令就可以了，前提是你的配置好composer.json跟composer.lock。它只会根据你lock里面的信息来安装。</div><div class="line"></div><div class="line">composer update的用法</div><div class="line"></div><div class="line">```composer update</div></pre></td></tr></table></figure>
-<p> 执行这样的命令就可以直接更新了，它不依赖与composer.lock，它会把你composer.json里面的带<code>.*</code>的包全部都更新到最新的版本。所以基本上这个命令我不推荐使用。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer install</div></pre></td></tr></table></figure>
+<p>执行这样的命令就可以了，前提是你的配置好composer.json跟composer.lock。它只会根据你lock里面的信息来安装。</p>
+<p> composer update的用法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer update</div></pre></td></tr></table></figure>
+<p>执行这样的命令就可以直接更新了，它不依赖与composer.lock，它会把你composer.json里面的带.*的包全部都更新到最新的版本。所以基本上这个命令我不推荐使用。</p>
 <p> 综上所述，一般来说如果你使用了第三方composer包，并且想要顺利上线的话，我这边推荐这么做。</p>
 <p> <em>1. 本地执行composer require “包名:版本号”</em></p>
 <p> <em>2. 把本地的composer.json跟composer.lock传到线上版本</em></p>
