@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="土狼的代码窝">
-    <title>Docker的简单使用 - 土狼的代码窝</title>
+    <title>登录那些事——SESSION COOKIE到TOKEN - 土狼的代码窝</title>
     <meta name="author" content="Sanit">
     
     
@@ -15,19 +15,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker">
+    <meta name="description" content="好久没写过文章了，感觉自己这段时间在虚度，刚好自己在重构登录注册，就来写一篇吧，我记得当年刚入行的时候就有人问我cookie与session的区别，实际工作中，很多小公司的程序员也只关注增删改查，对于一些很基础的东西反而都没好好掌握。">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Docker的简单使用">
-<meta property="og:url" content="https://sanit1.github.io/2016/12/01/Docker的简单使用/index.html">
+<meta property="og:title" content="登录那些事——SESSION COOKIE到TOKEN">
+<meta property="og:url" content="https://sanit1.github.io/2017/07/18/登录注册那些事/index.html">
 <meta property="og:site_name" content="土狼的代码窝">
-<meta property="og:description" content="最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker">
-<meta property="og:image" content="http://ofnct0qsm.bkt.clouddn.com/dockerPull.png">
-<meta property="og:image" content="http://ofnct0qsm.bkt.clouddn.com/dockerpush.png">
-<meta property="og:updated_time" content="2017-04-04T05:43:04.030Z">
+<meta property="og:description" content="好久没写过文章了，感觉自己这段时间在虚度，刚好自己在重构登录注册，就来写一篇吧，我记得当年刚入行的时候就有人问我cookie与session的区别，实际工作中，很多小公司的程序员也只关注增删改查，对于一些很基础的东西反而都没好好掌握。">
+<meta property="og:image" content="http://ofnct0qsm.bkt.clouddn.com/nocookie.png">
+<meta property="og:updated_time" content="2017-07-24T16:38:45.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker的简单使用">
-<meta name="twitter:description" content="最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker">
-<meta name="twitter:image" content="http://ofnct0qsm.bkt.clouddn.com/dockerPull.png">
+<meta name="twitter:title" content="登录那些事——SESSION COOKIE到TOKEN">
+<meta name="twitter:description" content="好久没写过文章了，感觉自己这段时间在虚度，刚好自己在重构登录注册，就来写一篇吧，我记得当年刚入行的时候就有人问我cookie与session的区别，实际工作中，很多小公司的程序员也只关注增删改查，对于一些很基础的东西反而都没好好掌握。">
+<meta name="twitter:image" content="http://ofnct0qsm.bkt.clouddn.com/nocookie.png">
     
     
         
@@ -193,13 +192,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Docker的简单使用
+            登录那些事——SESSION COOKIE到TOKEN
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-12-01T01:59:24+08:00">
+    <time itemprop="datePublished" datetime="2017-07-18T20:07:43+08:00">
 	
-		    12月 01, 2016
+		    7月 18, 2017
     	
     </time>
     
@@ -210,52 +209,36 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <blockquote>
-<p>最近这个docker容器很火。好多牛逼的公司拿它来布置各样的环境啊，布置分布式啊等等。当然，作为码畜的我，玩的没其它人高级。正好公司要求线上环境要跟自己的开发环境保持一致，我就用上了docker<br><a id="more"></a></p>
-<hr>
+<p>好久没写过文章了，感觉自己这段时间在虚度，刚好自己在重构登录注册，就来写一篇吧，我记得当年刚入行的时候就有人问我cookie与session的区别，实际工作中，很多小公司的程序员也只关注增删改查，对于一些很基础的东西反而都没好好掌握。</p>
 </blockquote>
-<h3 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h3><p>　　根据百度百科的定义:Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。其实docker就是一个容器的概念，这个容器可以运行各种镜像。比如你线上的环境是lnmp,你可以打包成一个docker镜像，你自己做负载或者要求多台服务器环境一样的时候，每台装个docker。然后run同样的镜像，那么就能保持各个环境的一致。而且你一台服务器可以跑多个镜像哦。</p>
+<a id="more"></a>
 <hr>
-<h3 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h3><p>　　Docker的安装也很简单，我们打开<a href="https://www.docker.com/" target="_blank" rel="external">docker官网</a>。官网有介绍docker的安装。我简单的来说明一下吧。如果你的电脑是Windows操作系统，最好升级到win10,docker在不是win10专业版或者企业版的电脑上也可以跑，不过这时候你是没法安装docker for windows的，这时候，docker是要在virtualbox运行的。也就相当于你Windows开了个虚拟机来跑docker.我上述讲的那两个版本的Windows能跑docker是因为win10自带虚拟机——Hyper-V。所以能运行docker.至于在linux下的安装，我主要用的Centos，你要想安装docker,你得把你的linux内核升到3以上。大部分人用的都是Centos6.5.他的内核是基于linux2.6的。如果你用的是Centos7.那你什么都不用管，可以直接安装，如果用的是6.5的，你可以选择换成7或者你可以在不升级操作系统，只升级它的内核。至于具体怎么升级，这里不展开讲，我有空也会在我的博客更新的。其实百度下有很多，只不过都是良莠不齐。具体的安装过程很简单，只要你满足我上述讲的条件的机子，因为比较穷，玩不起mac,没在mac下安装过，基本上几分钟就安装好了。<a href="https://docs.docker.com/engine/getstarted/" target="_blank" rel="external">docker安装过程</a></p>
+<h3 id="最原始的登录实现"><a href="#最原始的登录实现" class="headerlink" title="最原始的登录实现"></a>最原始的登录实现</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//验证传过来的账号密码是否跟数据库里面的用户对的上</span></div><div class="line">    <span class="keyword">if</span>(账号密码通过验证)&#123;</div><div class="line">    	session_start();</div><div class="line">        $_SESSION[<span class="string">'xxx+uid'</span>] = <span class="string">'用户信息'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这时候我们来访问下页面，这时候我们发现页面上竟然带上了cookie<br><img src="http://ofnct0qsm.bkt.clouddn.com/nocookie.png" alt=""><br>这是为什么呢，因为php在我们使用SESSION的时候就会默认给我带上PHPSESSID的cookie给浏览器。</p>
+<p>然后一些新手程序员怎么弄自动登录呢，就简单的这样写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">autoLogin</span><span class="params">()</span></span>&#123;</div><div class="line">	session_start();</div><div class="line">    $userInfo = $_SESSION[<span class="string">'xxx+uid'</span>];</div><div class="line">    <span class="keyword">if</span>(!<span class="keyword">empty</span>($userInfo)) &#123;</div><div class="line">    	<span class="comment">//获取用户信息成功，自动登录执行其它业务逻辑</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">    	<span class="comment">//获取用户信息失败，跳转到登录页面</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>虽然说这样使用貌似没什么问题，所以很多新人就搞不懂session与cookie的区别，回答的支支吾吾的。但是，我们看上面cookie的生命周期，我们发现在浏览器关闭的时候，这个cookie就失效了，所以有些人就这么坑爹的搞，貌似在他看来就是这么自动登录的，其实他们完全没理解这套机制。那么最简单的改法就是只要我们把这个cookie的生命周期弄长，让它在浏览器关闭的时候，下次打开浏览器也能活着。php自带的<a href="http://php.net/manual/en/function.session-start.php" target="_blank" rel="external">session_start</a>这个方法它支持我们传一个‘cookie_lifetime’的值进去(你要设置cookie的过期时间，比如要设置到明天这个时间点，那就是当前的时间戳+一天的秒数)。这样设置以后，一个最简单的保持登录功能就完成了。</p>
+<p>当然，我们也可以不用php自带的PHPSESSID,我们可以自定义sessionId。当然，php也很方便的为我们封装了方法</p>
+<p>做法是这样的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="comment">//验证传过来的账号密码是否跟数据库里面的用户对的上</span></div><div class="line">    <span class="keyword">if</span>(账号密码通过验证)&#123;</div><div class="line">    	$sessionId = <span class="string">'xxx+uid'</span>;</div><div class="line">        session_id($sessionId);</div><div class="line">    	session_start();</div><div class="line">        $_SESSION[$sessionId] = <span class="string">'用户信息'</span>;</div><div class="line">        <span class="comment">//把sessionId用cookie传给浏览器，并设置它的生命周期</span></div><div class="line">        setcookie(<span class="string">'userSessionId'</span>, $sessionId, <span class="string">'过期时间'</span>, ‘cookie的路径’, ‘cookie的作用域’, ‘是否仅通过安全的 HTTPS 连接’, ‘仅通过HTTP 连接’);<span class="comment">//具体的参数大家可以参考php.net上面的介绍</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">autoLogin</span><span class="params">()</span></span>&#123;</div><div class="line">	$sessionId = $_COOKIE[<span class="string">'userSessionId'</span>];<span class="comment">//你刚才设置的cookie的name</span></div><div class="line">    session_id($sessionId);</div><div class="line">    session_start();</div><div class="line">    $userInfo = $_SESSION[$sessionId];</div><div class="line">    <span class="keyword">if</span>(!<span class="keyword">empty</span>($userInfo)) &#123;</div><div class="line">    	<span class="comment">//获取用户信息成功，自动登录执行其它业务逻辑</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">    	<span class="comment">//获取用户信息失败，跳转到登录页面</span></div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以那些百度上的答案，seesion存在服务端，cookie存浏览器，你说它错吗，它也没错，但是它没把本质讲清楚，session就是依赖cookie这样使用的，这也是web界非常经典的使用方式。</p>
 <hr>
-<h3 id="运行docker容器"><a href="#运行docker容器" class="headerlink" title="运行docker容器"></a>运行docker容器</h3><p>　　安装好Docker后，我们得有个镜像才能让容器跑起来(Windows下直接打开cmd命令行)。首先我们先登录一个docker仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker login --username=xxxxx</div></pre></td></tr></table></figure></p>
-<p>然后根据提示输入密码，登录成功。然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull 镜像名称:镜像tag</div></pre></td></tr></table></figure></p>
-<p>阿里云有免费的docker仓库，我就拿来用了。然后你需要做的就是等待镜像下载好。下载好后，我们可以通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images -a</div></pre></td></tr></table></figure>
-<p>查看已经下载的镜像。如果你直接docker pull的话，应该是从dockerhub上载公共镜像的<br><img src="http://ofnct0qsm.bkt.clouddn.com/dockerPull.png" alt="docker pull成功的结果"><br>这就是我下载好的镜像。我们怎么把它跑起来呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -itd --name work  -p  80:80  -v d:/work/:/dockerdata/www/ registry.cn-hangzhou.aliyuncs.com/hsn/lnmp:160930</div></pre></td></tr></table></figure>
-<p>我主要讲下几个重要的参数 –name是指你要跑起来容器的名字，-p是端口映射的意思，就是把本机的80端口映射到虚拟机里面的80端口，-v是绑定目录的意思，就是把你本机的目录绑定到docker容器里面。后面跟的就是你的镜像。run好我们的容器之后，我们开始进入容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker attach 你run的容器名字</div></pre></td></tr></table></figure></p>
-<p>这时候我们就进入了我们run起来的容器了。如果你忘记了容器名字，你可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure></p>
-<p>来查看你所有run的容器。同一个镜像可以被run多个容器。<a href="http://www.infoq.com/cn/articles/docker-command-line-quest/" target="_blank" rel="external">更多docker run参数说明参考</a></p>
+<h3 id="稍微演变后的登录"><a href="#稍微演变后的登录" class="headerlink" title="稍微演变后的登录"></a>稍微演变后的登录</h3><p>可以看到我们上面的登录，并且保持登录方式确实简单有效，但是随着业务的不断发展，很多公司服务器都是分布式负载一个项目，那么这个就会导致一个问题，默认的session是存文件的，你要多台服务器共享磁盘吗，显然很低效，那么这么多台服务器怎么共享session呢？当然session是支持其它的存储方式的，比如像想在用到的非常多的memcache、redis这种高速的内存数据库。那我们只要多台服务器用一个redis或一个redis集群，那么就实现session共享了。那为什么大费周章的用session,我们自己也可以凭借这种内存型数据库构造一种类似session的机制，直接去掉session。这时候就有一种登录的方式演变出来了，我用redis memche这种key value的数据库直接存用户信息，然后cookie里面直接存一个自己按一定规则生成的用户标识，不也能实现登录+保持登录吗？确实是这样的。</p>
+<p>这里我用redis作为例子</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<h3 id="在docker容器里面跑项目"><a href="#在docker容器里面跑项目" class="headerlink" title="在docker容器里面跑项目"></a>在docker容器里面跑项目</h3><p>因为我刚才在我把本机的80端口映射到docker容器的80端口。我在容器里面有nginx。所以我只要这样配置就能跑起nginx服务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">listen 80;</div><div class="line">server_name book.work.dev;(自己定的域名)</div><div class="line">index index.html index.htm index.php default.html default.htm default.php;</div><div class="line">root  /dockerdata/www/book/public;(容器里面项目的入口,对应的就是我挂载的D:/work/book/public)</div></pre></td></tr></table></figure></p>
-<p>自己本机的host这样改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">192.168.10.207  book.work.dev(host域名指向本机的ip,不走公网的dns)</div></pre></td></tr></table></figure></p>
-<p>ok,打开浏览器，我们就能愉快的玩耍了。</p>
-<hr>
-<h3 id="上传镜像到自己的仓库"><a href="#上传镜像到自己的仓库" class="headerlink" title="上传镜像到自己的仓库"></a>上传镜像到自己的仓库</h3><p>比如有时候我们装了个redis啊，装了个mongodb啊，我们想下次使用的时候容器还会有这些东西。也简单的，我这里以阿里云的docker仓库为例。登录<a href="https://dev.aliyun.com" target="_blank" rel="external">阿里云docker仓库</a>.然后创建个本地镜像仓库。然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker login --username=xxxxx registry.cn-hangzhou.aliyuncs.com</div><div class="line">docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]</div><div class="line">docker push registry.cn-hangzhou.aliyuncs.com/hsn/test:[镜像版本号]</div></pre></td></tr></table></figure></p>
-<p><img src="http://ofnct0qsm.bkt.clouddn.com/dockerpush.png" alt="docker push"><br>每次给你的容器打个tag就能推送到阿里云的docker仓库了。</p>
-<hr>
-<h3 id="如何在本地制作Docker镜像"><a href="#如何在本地制作Docker镜像" class="headerlink" title="如何在本地制作Docker镜像"></a>如何在本地制作Docker镜像</h3><hr>
-<h3 id="Docker的高级玩法-docker-file"><a href="#Docker的高级玩法-docker-file" class="headerlink" title="Docker的高级玩法(docker-file)"></a>Docker的高级玩法(docker-file)</h3><hr>
-<h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h3><hr>
-
+<h3 id="新时代的JWT-json-web-token"><a href="#新时代的JWT-json-web-token" class="headerlink" title="新时代的JWT(json web token)"></a>新时代的JWT(json web token)</h3>
             
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
-        
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">标签</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/Docker/">Docker</a>
-
-            </div>
         
         <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/08/Laravel依赖注入的实现/"  data-tooltip="Laravel依赖注入的实现">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -263,7 +246,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/" data-tooltip="存在就更新，不存在就插入在并发情景下一个常见的BUG探讨">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/03/22/Composer的使用/" data-tooltip="Composer的使用">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -278,17 +261,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -326,7 +309,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/08/Laravel依赖注入的实现/"  data-tooltip="Laravel依赖注入的实现">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -334,7 +317,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/11/16/存在就更新，不存在就插入在并发情景下一个常见的BUG探讨/" data-tooltip="存在就更新，不存在就插入在并发情景下一个常见的BUG探讨">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/03/22/Composer的使用/" data-tooltip="Composer的使用">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -349,17 +332,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -379,17 +362,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2016/12/01/Docker的简单使用/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sanit1.github.io/2017/07/18/登录注册那些事/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>

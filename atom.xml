@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sanit1.github.io/"/>
-  <updated>2017-04-23T16:22:48.390Z</updated>
+  <updated>2017-07-24T16:38:45.115Z</updated>
   <id>https://sanit1.github.io/</id>
   
   <author>
@@ -16,11 +16,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>登录那些事——SESSION COOKIE到TOKEN</title>
+    <link href="https://sanit1.github.io/2017/07/18/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
+    <id>https://sanit1.github.io/2017/07/18/登录注册那些事/</id>
+    <published>2017-07-18T12:07:43.000Z</published>
+    <updated>2017-07-24T16:38:45.115Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>好久没写过文章了，感觉自己这段时间在虚度，刚好自己在重构登录注册，就来写一篇吧，我记得当年刚入行的时候就有人问我cookie与session的区别，实际工作中，很多小公司的程序员也只关注增删改查，对于一些很基础的东西反而都没好好掌握。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h3 id="最原始的登录实现"><a href="#最原始的登录实现" class="headerlink" title="最原始的登录实现"></a>最原始的登录实现</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//验证传过来的账号密码是否跟数据库里面的用户对的上</span></div><div class="line">    <span class="keyword">if</span>(账号密码通过验证)&#123;</div><div class="line">    	session_start();</div><div class="line">        $_SESSION[<span class="string">'xxx+uid'</span>] = <span class="string">'用户信息'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这时候我们来访问下页面，这时候我们发现页面上竟然带上了cookie<br><img src="http://ofnct0qsm.bkt.clouddn.com/nocookie.png" alt=""><br>这是为什么呢，因为php在我们使用SESSION的时候就会默认给我带上PHPSESSID的cookie给浏览器。</p>
+<p>然后一些新手程序员怎么弄自动登录呢，就简单的这样写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">autoLogin</span><span class="params">()</span></span>&#123;</div><div class="line">	session_start();</div><div class="line">    $userInfo = $_SESSION[<span class="string">'xxx+uid'</span>];</div><div class="line">    <span class="keyword">if</span>(!<span class="keyword">empty</span>($userInfo)) &#123;</div><div class="line">    	<span class="comment">//获取用户信息成功，自动登录执行其它业务逻辑</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">    	<span class="comment">//获取用户信息失败，跳转到登录页面</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>虽然说这样使用貌似没什么问题，所以很多新人就搞不懂session与cookie的区别，回答的支支吾吾的。但是，我们看上面cookie的生命周期，我们发现在浏览器关闭的时候，这个cookie就失效了，所以有些人就这么坑爹的搞，貌似在他看来就是这么自动登录的，其实他们完全没理解这套机制。那么最简单的改法就是只要我们把这个cookie的生命周期弄长，让它在浏览器关闭的时候，下次打开浏览器也能活着。php自带的<a href="http://php.net/manual/en/function.session-start.php" target="_blank" rel="external">session_start</a>这个方法它支持我们传一个‘cookie_lifetime’的值进去(你要设置cookie的过期时间，比如要设置到明天这个时间点，那就是当前的时间戳+一天的秒数)。这样设置以后，一个最简单的保持登录功能就完成了。</p>
+<p>当然，我们也可以不用php自带的PHPSESSID,我们可以自定义sessionId。当然，php也很方便的为我们封装了方法</p>
+<p>做法是这样的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="comment">//验证传过来的账号密码是否跟数据库里面的用户对的上</span></div><div class="line">    <span class="keyword">if</span>(账号密码通过验证)&#123;</div><div class="line">    	$sessionId = <span class="string">'xxx+uid'</span>;</div><div class="line">        session_id($sessionId);</div><div class="line">    	session_start();</div><div class="line">        $_SESSION[$sessionId] = <span class="string">'用户信息'</span>;</div><div class="line">        <span class="comment">//把sessionId用cookie传给浏览器，并设置它的生命周期</span></div><div class="line">        setcookie(<span class="string">'userSessionId'</span>, $sessionId, <span class="string">'过期时间'</span>, ‘cookie的路径’, ‘cookie的作用域’, ‘是否仅通过安全的 HTTPS 连接’, ‘仅通过HTTP 连接’);<span class="comment">//具体的参数大家可以参考php.net上面的介绍</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">autoLogin</span><span class="params">()</span></span>&#123;</div><div class="line">	$sessionId = $_COOKIE[<span class="string">'userSessionId'</span>];<span class="comment">//你刚才设置的cookie的name</span></div><div class="line">    session_id($sessionId);</div><div class="line">    session_start();</div><div class="line">    $userInfo = $_SESSION[$sessionId];</div><div class="line">    <span class="keyword">if</span>(!<span class="keyword">empty</span>($userInfo)) &#123;</div><div class="line">    	<span class="comment">//获取用户信息成功，自动登录执行其它业务逻辑</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">    	<span class="comment">//获取用户信息失败，跳转到登录页面</span></div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以那些百度上的答案，seesion存在服务端，cookie存浏览器，你说它错吗，它也没错，但是它没把本质讲清楚，session就是依赖cookie这样使用的，这也是web界非常经典的使用方式。</p>
+<hr>
+<h3 id="稍微演变后的登录"><a href="#稍微演变后的登录" class="headerlink" title="稍微演变后的登录"></a>稍微演变后的登录</h3><p>可以看到我们上面的登录，并且保持登录方式确实简单有效，但是随着业务的不断发展，很多公司服务器都是分布式负载一个项目，那么这个就会导致一个问题，默认的session是存文件的，你要多台服务器共享磁盘吗，显然很低效，那么这么多台服务器怎么共享session呢？当然session是支持其它的存储方式的，比如像想在用到的非常多的memcache、redis这种高速的内存数据库。那我们只要多台服务器用一个redis或一个redis集群，那么就实现session共享了。那为什么大费周章的用session,我们自己也可以凭借这种内存型数据库构造一种类似session的机制，直接去掉session。这时候就有一种登录的方式演变出来了，我用redis memche这种key value的数据库直接存用户信息，然后cookie里面直接存一个自己按一定规则生成的用户标识，不也能实现登录+保持登录吗？确实是这样的。</p>
+<p>这里我用redis作为例子</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="新时代的JWT-json-web-token"><a href="#新时代的JWT-json-web-token" class="headerlink" title="新时代的JWT(json web token)"></a>新时代的JWT(json web token)</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;好久没写过文章了，感觉自己这段时间在虚度，刚好自己在重构登录注册，就来写一篇吧，我记得当年刚入行的时候就有人问我cookie与session的区别，实际工作中，很多小公司的程序员也只关注增删改查，对于一些很基础的东西反而都没好好掌握。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Composer的使用</title>
     <link href="https://sanit1.github.io/2017/03/22/Composer%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://sanit1.github.io/2017/03/22/Composer的使用/</id>
     <published>2017-03-22T07:58:00.000Z</published>
-    <updated>2017-04-23T16:22:48.390Z</updated>
+    <updated>2017-07-18T15:40:13.727Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>有段时间没更新博客了，自己最近也很忙。今年年初换了一份新工作，我不知道自己是不是成功的跳槽，这段时间很迷茫。好久没更新博客了，这篇文章也写的断断续续的。基本上自己也熟练掌握composer了，就相当于给自己的巩固，就写一篇出来</p>
