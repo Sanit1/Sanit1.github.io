@@ -8,7 +8,7 @@
    * @constructor
    */
   var AboutCard = function() {
-    this.$openBtn = $("#sidebar, #header").find("a[href*='#about']");
+    this.$openBtn = $('#sidebar, #header').find('a[href*="#about"]');
     this.$closeBtn = $('#about-btn-close');
     this.$blog = $('#blog');
     this.$about = $('#about');
@@ -507,7 +507,7 @@
 })(jQuery);
 ;(function($) {
   'use strict';
-  
+
   // Run fancybox feature
 
   $(document).ready(function() {
@@ -516,51 +516,31 @@
      * @returns {void}
      */
     function fancyFox() {
-      var arrows = true;
-      var thumbs = null;
+      var thumbs = false;
 
       // disable navigation arrows and display thumbs on medium and large screens
       if ($(window).height() > 480) {
-        arrows = false;
-        thumbs = {
-          width: 70,
-          height: 70
-        };
+        thumbs = true;
       }
 
       $('.fancybox').fancybox({
-        maxWidth: 900,
-        maxHeight: 800,
-        fitToView: true,
-        width: '50%',
-        height: '50%',
-        autoSize: true,
-        arrows: arrows,
-        closeClick: false,
-        openEffect: 'elastic',
-        closeEffect: 'elastic',
-        prevEffect: 'none',
-        nextEffect: 'none',
-        padding: '0',
-        helpers: {
-          thumbs: thumbs,
-          overlay: {
-            css: {
-              overflow: 'hidden',
-              background: 'rgba(0, 0, 0, 0.85)'
-            }
-          }
-        },
-        afterLoad: function() {
-          setTimeout(function() {
-            $('.fancybox-next > span, .fancybox-prev > span').css('visibility', 'visible');
-          }, 400);
+        buttons: [
+          'fullScreen',
+          'thumbs',
+          'share',
+          'download',
+          'zoom',
+          'close'
+        ],
+        thumbs: {
+          autoStart: thumbs,
+          axis: 'x'
         }
       });
     }
 
     fancyFox();
-    
+
     $(window).smartresize(function() {
       fancyFox();
     });
@@ -580,7 +560,7 @@
     this.headerHeight = this.$header.height();
     // CSS class located in `source/_css/layout/_header.scss`
     this.headerUpCSSClass = 'header-up';
-    this.delta = 5;
+    this.delta = 15;
     this.lastScrollTop = 0;
   };
 
@@ -756,8 +736,10 @@
     this.$postBottomBar = $('.post-bottom-bar');
     this.$postFooter = $('.post-actions-wrap');
     this.$header = $('#header');
-    this.delta = 1;
+    this.delta = 15;
     this.lastScrollTop = 0;
+    this.lastScrollDownPos = 0;
+    this.lastScrollUpPos = 0;
   };
 
   PostBottomBar.prototype = {
@@ -791,17 +773,26 @@
     swipePostBottomBar: function() {
       var scrollTop = $(window).scrollTop();
       var postFooterOffsetTop = this.$postFooter.offset().top;
-      // show bottom bar
-      // if the user scrolled upwards more than `delta`
-      // and `post-footer` div isn't visible
-      if (this.lastScrollTop > scrollTop &&
-        (postFooterOffsetTop + this.$postFooter.height() > scrollTop + $(window).height() ||
-        postFooterOffsetTop < scrollTop + this.$header.height())) {
-        this.$postBottomBar.slideDown();
+
+      // scrolling up
+      if (this.lastScrollTop > scrollTop) {
+        // show bottom bar
+        // if the user scrolled upwards more than `delta`
+        // and `post-footer` div isn't visible
+        if (Math.abs(this.lastScrollDownPos - scrollTop) > this.delta &&
+          (postFooterOffsetTop + this.$postFooter.height() > scrollTop + $(window).height() ||
+            postFooterOffsetTop < scrollTop + this.$header.height())) {
+          this.$postBottomBar.slideDown();
+          this.lastScrollUpPos = scrollTop;
+        }
       }
-      else {
+
+      // scrolling down
+      if (scrollTop > this.lastScrollUpPos + this.delta) {
         this.$postBottomBar.slideUp();
+        this.lastScrollDownPos = scrollTop;
       }
+
       this.lastScrollTop = scrollTop;
     }
   };
@@ -848,8 +839,9 @@
       // open modal when `s` button is pressed
       $(document).keyup(function(event) {
         var target = event.target || event.srcElement;
-        // exit if user is focusing an input
-        if (target.tagName.toUpperCase() === 'INPUT') {
+        // exit if user is focusing an input or textarea
+        var tagName = target.tagName.toUpperCase();
+        if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
           return;
         }
 
@@ -932,7 +924,7 @@
         html += '<div class="media">';
         if (post.thumbnailImageUrl) {
           html += '<div class="media-left">';
-          html += '<a class="link-unstyled" href="' + (post.link || post.permalink) +'">';
+          html += '<a class="link-unstyled" href="' + (post.link || post.permalink) + '">';
           html += '<img class="media-image" ' +
             'src="' + post.thumbnailImageUrl + '" ' +
             'width="90" height="90"/>';
@@ -941,7 +933,7 @@
         }
 
         html += '<div class="media-body">';
-        html += '<a class="link-unstyled" href="' + (post.link || post.permalink) +'">';
+        html += '<a class="link-unstyled" href="' + (post.link || post.permalink) + '">';
         html += '<h3 class="media-heading">' + post.title + '</h3>';
         html += '</a>';
         html += '<span class="media-meta">';
@@ -1028,9 +1020,9 @@
 })(jQuery);
 ;(function($) {
   'use strict';
-
+  
   // Open and close the share options bar
-
+  
   /**
    * ShareOptionsBar
    * @constructor
@@ -1038,18 +1030,19 @@
   var ShareOptionsBar = function() {
     this.$shareOptionsBar = $('#share-options-bar');
     this.$openBtn = $('.btn-open-shareoptions');
-    this.$closeBtn = $('#share-options-mask');
+    this.$closeBtn = $('#btn-close-shareoptions');
+    this.$body = $('body');
   };
-
+  
   ShareOptionsBar.prototype = {
-
+    
     /**
      * Run ShareOptionsBar feature
      * @return {void}
      */
     run: function() {
       var self = this;
-
+      
       // Detect the click on the open button
       self.$openBtn.click(function() {
         if (!self.$shareOptionsBar.hasClass('opened')) {
@@ -1057,7 +1050,7 @@
           self.$closeBtn.show();
         }
       });
-
+      
       // Detect the click on the close button
       self.$closeBtn.click(function() {
         if (self.$shareOptionsBar.hasClass('opened')) {
@@ -1066,50 +1059,50 @@
         }
       });
     },
-
+    
     /**
      * Open share options bar
      * @return {void}
      */
     openShareOptions: function() {
       var self = this;
-
+      
       // Check if the share option bar isn't opened
       // and prevent multiple click on the open button with `.processing` class
       if (!self.$shareOptionsBar.hasClass('opened') &&
         !this.$shareOptionsBar.hasClass('processing')) {
         // Open the share option bar
         self.$shareOptionsBar.addClass('processing opened');
-
+        self.$body.css('overflow', 'hidden');
+        
         setTimeout(function() {
           self.$shareOptionsBar.removeClass('processing');
         }, 250);
       }
     },
-
+    
     /**
      * Close share options bar
      * @return {void}
      */
     closeShareOptions: function() {
       var self = this;
-
+      
       // Check if the share options bar is opened
       // and prevent multiple click on the close button with `.processing` class
       if (self.$shareOptionsBar.hasClass('opened') &&
         !this.$shareOptionsBar.hasClass('processing')) {
         // Close the share option bar
-        self.$shareOptionsBar
-          .addClass('processing')
-          .removeClass('opened');
-
+        self.$shareOptionsBar.addClass('processing').removeClass('opened');
+        
         setTimeout(function() {
           self.$shareOptionsBar.removeClass('processing');
+          self.$body.css('overflow', '');
         }, 250);
       }
     }
   };
-
+  
   $(document).ready(function() {
     var shareOptionsBar = new ShareOptionsBar();
     shareOptionsBar.run();
