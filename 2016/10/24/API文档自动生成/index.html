@@ -15,7 +15,7 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sanit","sameAs":[],"image":"head_pic.jpeg"},"articleBody":"\n本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了\n\n\napidoc简介apidoc是node的一个插件，它的功能就是能让把我们的代码注释生成api文档。它支持php java javascript python等多种语言。因为写接口的同学通常很烦写完接口还得写文档，文档更新又麻烦。apidoc不仅支持项目的版本，也支持api的版本。在我所接触过的文档生成工具里面，这个是我感觉比较好用的。\n\napidoc的安装apidoc是node的一个插件，那么它的安装就依赖node。node的具体安装我这里就不详细说了，去node官网下包,解压，编译然后安装。直接执行:1npm install apidoc -g\n\nsamba的安装samba的安装也很简单，本人用的是CentOS，我直接执行:1yum install samba\n就安装好了\n\nsamba的配置1234567[public]comment = Public Stuffpath = /share/doc  //你需要共享文件夹的路径browseable = yes  //可浏览性guest ok = yes  //是否允许访客public = yes  //是否可上传writable = yes  //是否可写\n我自己装的时候也都是这么配置的，注意，这个samba需要你关闭你的防火墙，还得把你共享的目录赋予777的权限（貌似755就够了，我直接给了777）。我这边还遇到过一个很坑爹的问题，就是这样配置了，用Windows访问这个共享目录的时候，要求我输入用户名和密码。其实主要还得把上面的security = user改成security = share\nsamba也是支持用户管理的，就是可以分配账号密码的，具体的就不展开介绍了。\n\napidoc的使用　　例如我们在代码里面下了这样的一段注释:12345678910111213141516171819202122/** * @api &#123;get post&#125;; /brand/:id/:name/:new 这里中括号里面填的的是请求方式（GET POST OPTION DELETE等），后面填的是路由 * @apiGroup brandList API接口所在的组名称 * @apiName  brands  API接口名称 * @apiVersion 1.0.1 API接口版本 * @apiDescription  API接口的描述 * @apiParam (入参) &#123;Number&#123;1-9999&#125;&#125;()这个括号里面的填的参数的组，括号里面相同的会被放在同一个表格里面 id=0 请求参数 大括号里面填的是参数类型 里面的大括号表示值的范围 后面就是参数的名称和默认值 * @apiParam (入参) &#123;String=“a”,“b”,“c”&#125;; name 品牌名称,等于号表示允许值 * @apiParam (入参) &#123;Boolean&#125;; new  * @apiParam (入参) &#123;Number&#125; [test] 如果参数套上[]这样的中括号，表明这个值是个可选的值 * * @apiParamExample &#123;json&#125; 接口返回值 * &#123; *     “code” : 0, *     “message” : “success”, *     “data” : &#123; *         “result” : “ok”; *     &#125; * &#125; * @apiSampleRequest  下面就是一个模拟请求器，可以帮我们调试接口 *     http://www.work.dev */\n基本上用这些已经足够了，其他的用法可以参考它的官网:\n生成apidoc假如我在我的控制器里面写了这样一段注释:1234567891011121314151617181920212223/** * @api &#123;GET&#125; /user_info 获取用户信息接口 * @apiGroup User * @apiVersion 2.0.0 * @apiDescription 获取用户信息 * * @apiParam (入参) &#123;String&#125; token 登录成功后客户端返回的token * * @apiSuccessExample Success-Response: *  &#123; *      &quot;code&quot;: 0, *      &quot;message&quot;: &quot;ok&quot; *      &quot;data&quot;: &#123; *           &quot;name&quot;: &quot;1&quot;,//状态 0:启用 1:停用 *           &quot;role&quot;: &quot;1&quot;,//1管理员，0是普通员工 *           &quot;sex&quot;: &quot;1&quot;,//1表示男性，2表示女性 *      &#125; *  &#125; * * @apiSampleRequest * http://api.test.com/user_info * */\n先cd到项目里面然后执行这样的语句:1apidoc -i app/Http/Controllers -o \\\\xxx.xxx.xxx.xxx\\public\\\n因为我samba共享的是这样一个文件夹，并且在这个里面放文档。然后我们来看下生成的结果:\n这时候我们直接点击index.html可以直接看到这样的静态页面:\n\n\n后话到这里，我们就已经很方便的能运用apidoc了，我们可以自己直接写好接口的时候直接写注释，一句命令写到开了samba的服务器上，然后直接访问静态页面，如果不想这样赤裸裸的访问静态页面，可以用node或者nginx直接绑上去，这里就不继续展开讲了\n\n后续补充其实在使用中的时候会发现一些很坑爹的问题，就是GroupName没法用中文，但是其他地方可以用中文。毕竟这个是国外大佬发明的，不是国人的产物，有存在这样的问题也在所难免。我不断的搜，发现github上有人给他提issure。也有给出了解决方案，apidoc的语法其实是支持引用的，所以我们可以这样定义123/** * @apiDefine name 测试中文 */\n 然后我们怎么使用呢。可以直接@apiUse name也可以直接在注释里面写name,这样就可以使用中文了。\n","dateCreated":"2016-10-24T01:12:00+08:00","dateModified":"2019-07-21T16:13:45+08:00","datePublished":"2016-10-24T01:12:00+08:00","description":"\n本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了\n","headline":"API文档自动生成","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://Sanit1.github.io/2016/10/24/API文档自动生成/"},"publisher":{"@type":"Organization","name":"Sanit","sameAs":[],"image":"head_pic.jpeg","logo":{"@type":"ImageObject","url":"head_pic.jpeg"}},"url":"https://Sanit1.github.io/2016/10/24/API文档自动生成/"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sanit","sameAs":[],"image":"head_pic.jpeg"},"articleBody":"\n本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了\n\n\napidoc简介apidoc是node的一个插件，它的功能就是能让把我们的代码注释生成api文档。它支持php java javascript python等多种语言。因为写接口的同学通常很烦写完接口还得写文档，文档更新又麻烦。apidoc不仅支持项目的版本，也支持api的版本。在我所接触过的文档生成工具里面，这个是我感觉比较好用的。\n\napidoc的安装apidoc是node的一个插件，那么它的安装就依赖node。node的具体安装我这里就不详细说了，去node官网下包,解压，编译然后安装。直接执行:1npm install apidoc -g\n\nsamba的安装samba的安装也很简单，本人用的是CentOS，我直接执行:1yum install samba\n就安装好了\n\nsamba的配置1234567[public]comment = Public Stuffpath = /share/doc  //你需要共享文件夹的路径browseable = yes  //可浏览性guest ok = yes  //是否允许访客public = yes  //是否可上传writable = yes  //是否可写\n我自己装的时候也都是这么配置的，注意，这个samba需要你关闭你的防火墙，还得把你共享的目录赋予777的权限（貌似755就够了，我直接给了777）。我这边还遇到过一个很坑爹的问题，就是这样配置了，用Windows访问这个共享目录的时候，要求我输入用户名和密码。其实主要还得把上面的security = user改成security = share\nsamba也是支持用户管理的，就是可以分配账号密码的，具体的就不展开介绍了。\n\napidoc的使用　　例如我们在代码里面下了这样的一段注释:12345678910111213141516171819202122/** * @api &#123;get post&#125;; /brand/:id/:name/:new 这里中括号里面填的的是请求方式（GET POST OPTION DELETE等），后面填的是路由 * @apiGroup brandList API接口所在的组名称 * @apiName  brands  API接口名称 * @apiVersion 1.0.1 API接口版本 * @apiDescription  API接口的描述 * @apiParam (入参) &#123;Number&#123;1-9999&#125;&#125;()这个括号里面的填的参数的组，括号里面相同的会被放在同一个表格里面 id=0 请求参数 大括号里面填的是参数类型 里面的大括号表示值的范围 后面就是参数的名称和默认值 * @apiParam (入参) &#123;String=“a”,“b”,“c”&#125;; name 品牌名称,等于号表示允许值 * @apiParam (入参) &#123;Boolean&#125;; new  * @apiParam (入参) &#123;Number&#125; [test] 如果参数套上[]这样的中括号，表明这个值是个可选的值 * * @apiParamExample &#123;json&#125; 接口返回值 * &#123; *     “code” : 0, *     “message” : “success”, *     “data” : &#123; *         “result” : “ok”; *     &#125; * &#125; * @apiSampleRequest  下面就是一个模拟请求器，可以帮我们调试接口 *     http://www.work.dev */\n基本上用这些已经足够了，其他的用法可以参考它的官网:\n生成apidoc假如我在我的控制器里面写了这样一段注释:1234567891011121314151617181920212223/** * @api &#123;GET&#125; /user_info 获取用户信息接口 * @apiGroup User * @apiVersion 2.0.0 * @apiDescription 获取用户信息 * * @apiParam (入参) &#123;String&#125; token 登录成功后客户端返回的token * * @apiSuccessExample Success-Response: *  &#123; *      &quot;code&quot;: 0, *      &quot;message&quot;: &quot;ok&quot; *      &quot;data&quot;: &#123; *           &quot;name&quot;: &quot;1&quot;,//状态 0:启用 1:停用 *           &quot;role&quot;: &quot;1&quot;,//1管理员，0是普通员工 *           &quot;sex&quot;: &quot;1&quot;,//1表示男性，2表示女性 *      &#125; *  &#125; * * @apiSampleRequest * http://api.test.com/user_info * */\n先cd到项目里面然后执行这样的语句:1apidoc -i app/Http/Controllers -o \\\\xxx.xxx.xxx.xxx\\public\\\n因为我samba共享的是这样一个文件夹，并且在这个里面放文档。然后我们来看下生成的结果:\n这时候我们直接点击index.html可以直接看到这样的静态页面:\n\n\n后话到这里，我们就已经很方便的能运用apidoc了，我们可以自己直接写好接口的时候直接写注释，一句命令写到开了samba的服务器上，然后直接访问静态页面，如果不想这样赤裸裸的访问静态页面，可以用node或者nginx直接绑上去，这里就不继续展开讲了\n\n后续补充其实在使用中的时候会发现一些很坑爹的问题，就是GroupName没法用中文，但是其他地方可以用中文。毕竟这个是国外大佬发明的，不是国人的产物，有存在这样的问题也在所难免。我不断的搜，发现github上有人给他提issure。也有给出了解决方案，apidoc的语法其实是支持引用的，所以我们可以这样定义123/** * @apiDefine name 测试中文 */\n 然后我们怎么使用呢。可以直接@apiUse name也可以直接在注释里面写name,这样就可以使用中文了。\n","dateCreated":"2016-10-24T01:12:00+08:00","dateModified":"2019-07-21T16:13:45+08:00","datePublished":"2016-10-24T01:12:00+08:00","description":"\n本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了\n","headline":"API文档自动生成","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html"},"publisher":{"@type":"Organization","name":"Sanit","sameAs":[],"image":"head_pic.jpeg","logo":{"@type":"ImageObject","url":"head_pic.jpeg"}},"url":"https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html"}</script>
     <meta name="description" content="本文主要讲述自动化API文档生成——apidoc。网上有几个篇文章都只是介绍apidoc的，具体怎么在自己的项目中使用以及与其他配合使用都是没介绍的。最近开始玩服务器，了解到了有Windows与Linux之间共享文件的方法，就是samba。然后具体和apidoc结合起来非常好用，所以本文就当做笔记来把它记录下来了">
 <meta name="keywords" content="后端">
 <meta property="og:type" content="blog">
@@ -291,7 +291,7 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -299,7 +299,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://Sanit1.github.io/2016/10/24/API文档自动生成/" title="分享到 Weibo">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html" title="分享到 Weibo">
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -307,7 +307,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://Sanit1.github.io/2016/10/24/API文档自动生成/&amp;title=API文档自动生成" title="分享到 QQ">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html&amp;title=API文档自动生成" title="分享到 QQ">
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -317,7 +317,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -367,7 +367,7 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -375,7 +375,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://Sanit1.github.io/2016/10/24/API文档自动生成/" title="分享到 Weibo">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html" title="分享到 Weibo">
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -383,7 +383,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://Sanit1.github.io/2016/10/24/API文档自动生成/&amp;title=API文档自动生成" title="分享到 QQ">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html&amp;title=API文档自动生成" title="分享到 QQ">
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -393,7 +393,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -410,7 +410,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://Sanit1.github.io/2016/10/24/API文档自动生成/">
+                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html">
                     <i class="fab fa-weibo" aria-hidden="true"></i><span>分享到 Weibo</span>
                 </a>
             </li>
@@ -418,7 +418,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://Sanit1.github.io/2016/10/24/API文档自动生成/&amp;title=API文档自动生成">
+                <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html&amp;title=API文档自动生成">
                     <i class="fab fa-qq" aria-hidden="true"></i><span>分享到 QQ</span>
                 </a>
             </li>
@@ -490,7 +490,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://Sanit1.github.io/2016/10/24/API文档自动生成/">
+                        <a class="link-unstyled" href="https://Sanit1.github.io/2016/10/24/API文档自动生成/index.html">
                             <h3 class="media-heading">API文档自动生成</h3>
                         </a>
                         <span class="media-meta">
